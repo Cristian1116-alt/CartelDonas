@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>El Cartel de las Donas</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="UNIDOS, El Cartel de las Donas. Donas rellenas y con cobertura a $5.000 cada una. Haz tu pedido por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@500;700;800&display=swap">
+<style>
+  /* Layout: cartel callejero de colores. Franja rosa con el logo, catálogo en tarjetas tipo "se busca", barra fija de pedido abajo. */
+  :root {
+    --rosa: #ff3d8b;
+    --rosa-suave: #ffe1ee;
+    --amarillo: #ffd23f;
+    --azul: #1fa3ff;
+    --negro: #1a1420;
+    --crema: #fff8f2;
+    --gris: #6b5f6e;
+    --wa: #1faa59;
+    --display: "Lilita One", "Arial Rounded MT Bold", "Trebuchet MS", sans-serif;
+    --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--crema);
+    color: var(--negro);
+    font: 500 16px/1.55 var(--body);
+    padding-bottom: 96px;
+  }
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.05; text-wrap: balance; margin: 0; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--azul); outline-offset: 3px; border-radius: 6px; }
+
+  /* Encabezado */
+  .top {
+    background: var(--negro);
+    color: #fff;
+  }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 10px; }
+  .top b { font-family: var(--display); font-weight: 400; font-size: 1.15rem; letter-spacing: .02em; }
+  .top b span { color: var(--amarillo); }
+  .top nav { display: flex; gap: 16px; font-weight: 700; font-size: .92rem; }
+  .top nav a { text-decoration: none; opacity: .85; }
+  .top nav a:hover { opacity: 1; color: var(--amarillo); }
+
+  /* Hero */
+  .hero {
+    background:
+      radial-gradient(circle at 12% 20%, var(--amarillo) 0 5px, transparent 6px),
+      radial-gradient(circle at 80% 14%, var(--azul) 0 5px, transparent 6px),
+      radial-gradient(circle at 92% 70%, #fff 0 4px, transparent 5px),
+      radial-gradient(circle at 6% 82%, var(--azul) 0 4px, transparent 5px),
+      radial-gradient(circle at 46% 92%, var(--amarillo) 0 4px, transparent 5px),
+      var(--rosa);
+    color: #fff;
+    overflow: hidden;
+  }
+  .hero .wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 32px; align-items: center; padding-block: 40px 48px; }
+  .hero h1 { font-size: clamp(2.6rem, 7vw, 4.6rem); text-shadow: 4px 4px 0 var(--negro); }
+  .hero h1 em { font-style: normal; color: var(--amarillo); display: block; }
+  .hero p { font-size: 1.15rem; max-width: 34ch; margin: 16px 0 24px; font-weight: 700; }
+  .precio-sello {
+    display: inline-flex; align-items: baseline; gap: 6px;
+    background: var(--amarillo); color: var(--negro);
+    padding: 8px 16px; border-radius: 999px; border: 3px solid var(--negro);
+    font-family: var(--display); font-size: 1.4rem; transform: rotate(-3deg);
+    box-shadow: 3px 3px 0 var(--negro);
+  }
+  .precio-sello small { font-family: var(--body); font-weight: 800; font-size: .8rem; }
+  .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; justify-content: center;
+    font: 800 1rem var(--body); text-decoration: none; cursor: pointer;
+    padding: 12px 20px; border-radius: 14px; border: 3px solid var(--negro);
+    background: #fff; color: var(--negro); box-shadow: 3px 3px 0 var(--negro);
+    transition: transform .12s, box-shadow .12s;
+  }
+  .btn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--negro); }
+  .btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--negro); }
+  .btn.wa { background: var(--wa); color: #fff; }
+  .btn[disabled] { opacity: .45; cursor: not-allowed; transform: none; box-shadow: 3px 3px 0 var(--negro); }
+  .logo-box { position: relative; justify-self: center; width: min(100%, 400px); }
+  .logo-box img {
+    width: 100%; display: block; border-radius: 50%;
+    background: #fff; border: 5px solid var(--negro); box-shadow: 8px 8px 0 var(--negro);
+  }
+
+  /* Secciones */
+  section { padding-block: 56px; }
+  .eyebrow { font-weight: 800; text-transform: uppercase; letter-spacing: .12em; font-size: .78rem; color: var(--rosa); margin-bottom: 8px; }
+  h2 { font-size: clamp(2rem, 5vw, 3rem); }
+  .lead { color: var(--gris); max-width: 60ch; margin: 10px 0 0; }
+
+  /* Galería */
+  .galeria { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+  .galeria figure { margin: 0; border: 3px solid var(--negro); border-radius: 18px; overflow: hidden; box-shadow: 5px 5px 0 var(--azul); background: #fff; }
+  .galeria img { display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+
+  /* Catálogo */
+  .catalogo { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; margin-top: 28px; }
+  .dona {
+    background: #fff; border: 3px solid var(--negro); border-radius: 20px;
+    display: flex; flex-direction: column; overflow: hidden;
+    box-shadow: 5px 5px 0 var(--rosa);
+  }
+  .dona:nth-child(2) { box-shadow: 5px 5px 0 var(--amarillo); }
+  .dona:nth-child(3) { box-shadow: 5px 5px 0 var(--azul); }
+  .dona img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; border-bottom: 3px solid var(--negro); }
+  .dona-body { padding: 14px 14px 16px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+  .dona h3 { font-size: 1.3rem; }
+  .chip { align-self: flex-start; font-size: .7rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; background: var(--rosa-suave); color: #b0105a; padding: 2px 8px; border-radius: 999px; }
+  .dona p { margin: 0; color: var(--gris); font-size: .92rem; flex: 1; }
+  .fila { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 8px; }
+  .precio { font-family: var(--display); font-size: 1.35rem; font-variant-numeric: tabular-nums; }
+  .stepper { display: inline-flex; align-items: center; border: 2px solid var(--negro); border-radius: 12px; overflow: hidden; }
+  .stepper button { width: 36px; height: 36px; border: 0; background: var(--amarillo); font: 800 1.2rem var(--body); cursor: pointer; color: var(--negro); }
+  .stepper button:hover { background: var(--rosa); color: #fff; }
+  .stepper output { min-width: 32px; text-align: center; font-weight: 800; font-variant-numeric: tabular-nums; }
+
+  /* Info */
+  .info { background: var(--negro); color: #fff; }
+  .info .eyebrow { color: var(--amarillo); }
+  .info-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 28px; }
+  .info-card { border: 2px solid rgba(255,255,255,.25); border-radius: 18px; padding: 20px; }
+  .info-card h3 { font-size: 1.4rem; color: var(--amarillo); margin-bottom: 8px; }
+  .info-card p { margin: 0; opacity: .9; }
+  .info-card .num { font-family: var(--display); font-size: 1.6rem; letter-spacing: .02em; user-select: all; }
+  .pendiente { display: inline-block; margin-top: 6px; font-size: .75rem; font-weight: 800; color: var(--negro); background: var(--amarillo); padding: 2px 8px; border-radius: 999px; }
+  footer { background: var(--negro); color: rgba(255,255,255,.6); font-size: .85rem; border-top: 2px dashed rgba(255,255,255,.2); }
+  footer .wrap { padding-block: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
+
+  /* Barra de pedido */
+  .pedido {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+    background: #fff; border-top: 3px solid var(--negro);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .pedido .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 12px; }
+  .resumen { min-width: 0; }
+  .resumen strong { font-family: var(--display); font-weight: 400; font-size: 1.4rem; font-variant-numeric: tabular-nums; }
+  .resumen span { display: block; color: var(--gris); font-size: .85rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  @media (max-width: 860px) {
+    .catalogo { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .info-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .hero .wrap { grid-template-columns: 1fr; padding-block: 28px 36px; }
+    .logo-box { width: min(78%, 300px); order: -1; }
+    .top nav { display: none; }
+    .galeria { grid-template-columns: 1fr; }
+    .catalogo { gap: 14px; }
+    .dona h3 { font-size: 1.1rem; }
+    .stepper button { width: 32px; height: 32px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <b>El Cartel <span>de las Donas</span></b>
+    <nav aria-label="Secciones">
+      <a href="#catalogo">Catálogo</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Hoy, cada dona <em>cuenta.</em></h1>
+        <p>Donas rellenas, con cobertura y bien azucaradas, hechas por UNIDOS. Arma tu pedido aquí y nos lo mandas por WhatsApp.</p>
+        <span class="precio-sello">$5.000 <small>c/u</small></span>
+        <div class="ctas">
+          <a class="btn" href="#catalogo">Ver las donas</a>
+          <a class="btn wa" id="wa-hero" href="https://wa.me/573052227062" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+        </div>
+      </div>
+      <div class="logo-box">
+        <img src="img/logo.png" alt="Logo de UNIDOS, El Cartel de las Donas: un panda, una ardilla y un corgi rodeados de donas" width="335" height="332">
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">Recién salidas</div>
+      <h2>Así se ven las del cartel</h2>
+      <div class="galeria">
+        <figure><img src="img/donas-rellenas.jpg" alt="Bandeja de donas azucaradas con relleno amarillo y de crema" loading="lazy"></figure>
+        <figure><img src="img/donas-surtidas.jpg" alt="Donas surtidas: de chocolate con topping, con crema y azucaradas rellenas" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="catalogo">
+    <div class="wrap">
+      <div class="eyebrow">Catálogo</div>
+      <h2>Escoge tus donas</h2>
+      <p class="lead">Todas a $5.000. Suma las que quieras con los botones y abajo te armamos el mensaje para WhatsApp.</p>
+      <div class="catalogo" id="lista"></div>
+    </div>
+  </section>
+
+  <section class="info" id="contacto">
+    <div class="wrap">
+      <div class="eyebrow">Contacto</div>
+      <h2>Cómo pedir</h2>
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>WhatsApp</h3>
+          <p class="num">305 222 7062</p>
+          <p>Escríbenos o arma el pedido en el catálogo. Confirmamos disponibilidad y entrega por chat.</p>
+        </div>
+        <div class="info-card">
+          <h3>Instagram</h3>
+          <p><a href="https://instagram.com/elcarteldelasdonas_" target="_blank" rel="noopener">@elcarteldelasdonas_</a></p>
+          <span class="pendiente">Por confirmar</span>
+        </div>
+        <div class="info-card">
+          <h3>Horarios y entregas</h3>
+          <p>Horario de atención, zonas y costo de domicilio.</p>
+          <span class="pendiente">Por confirmar</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>UNIDOS · El Cartel de las Donas</span>
+    <span>Hoy, cada dona cuenta.</span>
+  </div>
+</footer>
+
+<div class="pedido" role="region" aria-label="Tu pedido">
+  <div class="wrap">
+    <div class="resumen" aria-live="polite">
+      <strong id="total">$0</strong>
+      <span id="detalle">Aún no has escogido donas</span>
+    </div>
+    <a class="btn wa" id="enviar" href="https://wa.me/573052227062" target="_blank" rel="noopener" aria-disabled="true">Pedir por WhatsApp</a>
+  </div>
+</div>
+
+<script>
+  // Catálogo editable: cambia nombres, descripciones o fotos aquí.
+  // Nombres provisionales tomados de las fotos; confirmar sabores con la dueña.
+  const WHATSAPP = "573052227062";
+  const PRECIO = 5000;
+  const DONAS = [
+    { id: "rellena", nombre: "Rellena azucarada", desc: "Dona cubierta de azúcar con relleno. Sabor del relleno por confirmar.", img: "img/c-rellenas-azucar.jpg" },
+    { id: "crema", nombre: "Rellena de crema", desc: "Dona dorada con crema por encima. Ingredientes por confirmar.", img: "img/c-crema.jpg" },
+    { id: "choco-crema", nombre: "Chocolate con crema", desc: "Cobertura de chocolate con crema. Ingredientes por confirmar.", img: "img/c-chocolate-crema.jpg" },
+    { id: "choco-topping", nombre: "Chocolate crocante", desc: "Cobertura de chocolate con topping crocante. Ingredientes por confirmar.", img: "img/c-chocolate-topping.jpg" }
+  ];
+  const cant = Object.fromEntries(DONAS.map(d => [d.id, 0]));
+  const pesos = n => "$" + n.toLocaleString("es-CO");
+
+  const lista = document.getElementById("lista");
+  lista.innerHTML = DONAS.map(d => `
+    <article class="dona">
+      <img src="${d.img}" alt="${d.nombre}" loading="lazy">
+      <div class="dona-body">
+        <span class="chip">Nombre provisional</span>
+        <h3>${d.nombre}</h3>
+        <p>${d.desc}</p>
+        <div class="fila">
+          <span class="precio">${pesos(PRECIO)}</span>
+          <div class="stepper">
+            <button type="button" data-id="${d.id}" data-d="-1" aria-label="Quitar una ${d.nombre}">−</button>
+            <output id="q-${d.id}">0</output>
+            <button type="button" data-id="${d.id}" data-d="1" aria-label="Agregar una ${d.nombre}">+</button>
+          </div>
+        </div>
+      </div>
+    </article>`).join("");
+
+  lista.addEventListener("click", e => {
+    const b = e.target.closest("button[data-id]");
+    if (!b) return;
+    const id = b.dataset.id;
+    cant[id] = Math.max(0, cant[id] + Number(b.dataset.d));
+    document.getElementById("q-" + id).textContent = cant[id];
+    actualizar();
+  });
+
+  function actualizar() {
+    const items = DONAS.filter(d => cant[d.id] > 0);
+    const unidades = items.reduce((s, d) => s + cant[d.id], 0);
+    const total = unidades * PRECIO;
+    document.getElementById("total").textContent = pesos(total);
+    document.getElementById("detalle").textContent = unidades
+      ? `${unidades} dona${unidades > 1 ? "s" : ""}: ` + items.map(d => `${cant[d.id]} ${d.nombre}`).join(", ")
+      : "Aún no has escogido donas";
+    const lineas = items.map(d => `• ${cant[d.id]} x ${d.nombre} (${pesos(cant[d.id] * PRECIO)})`);
+    const texto = unidades
+      ? `¡Hola, Cartel de las Donas! Quiero hacer este pedido:\n${lineas.join("\n")}\nTotal: ${pesos(total)}\n\nMi nombre: \nDirección o punto de entrega: `
+      : "¡Hola, Cartel de las Donas! Quiero hacer un pedido.";
+    const btn = document.getElementById("enviar");
+    btn.href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(texto)}`;
+    btn.setAttribute("aria-disabled", unidades ? "false" : "true");
+  }
+  actualizar();
+</script>
+</body>
+</html>
