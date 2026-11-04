@@ -106,6 +106,8 @@
   .galeria { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
   .galeria figure { margin: 0; border: 3px solid var(--negro); border-radius: 18px; overflow: hidden; box-shadow: 5px 5px 0 var(--azul); background: #fff; }
   .galeria img { display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+  .foto-vacia { aspect-ratio: 1 / 1; display: grid; place-items: center; background: repeating-linear-gradient(45deg, #fff 0 14px, #fff4c2 14px 28px) !important; }
+  .foto-vacia span { font-weight: 800; background: var(--rosa); color: #fff; border: 3px solid var(--negro); padding: 6px 14px; border-radius: 999px; }
 
   /* Catálogo */
   .catalogo { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; margin-top: 28px; }
@@ -201,8 +203,8 @@
       <div class="eyebrow">Recién salidas</div>
       <h2>Así se ven las del cartel</h2>
       <div class="galeria">
-        <figure><img src="img/donas-rellenas.jpg" alt="Bandeja de donas azucaradas con relleno amarillo y de crema" loading="lazy"></figure>
-        <figure><img src="img/donas-surtidas.jpg" alt="Donas surtidas: de chocolate con topping, con crema y azucaradas rellenas" loading="lazy"></figure>
+        <figure class="foto-vacia"><span>Foto próximamente</span></figure>
+        <figure class="foto-vacia"><span>Foto próximamente</span></figure>
       </div>
     </div>
   </section>
