@@ -120,9 +120,15 @@
   .stepper button:hover { background: var(--rosa); color: #fff; }
   .stepper output { min-width: 32px; text-align: center; font-weight: 800; font-variant-numeric: tabular-nums; }
 
-  .sabor { display: flex; flex-direction: column; gap: 4px; margin-top: 4px; font-size: .8rem; font-weight: 800; }
-  .sabor select { font: 700 .95rem var(--body); color: var(--negro); padding: 8px 10px; border: 2px solid var(--negro); border-radius: 12px; background: var(--rosa-suave); cursor: pointer; width: 100%; }
-  .escogidos { font-size: .8rem; color: #b0105a; font-weight: 700; min-height: 1.2em; }
+  .sub-sabores { font-size: clamp(1.5rem, 4vw, 2rem); margin-top: 44px; }
+  .sabores { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; margin-top: 20px; }
+  .sabor-card { background: #fff; border: 3px solid var(--negro); border-radius: 16px; padding: 12px; display: flex; flex-direction: column; gap: 6px; box-shadow: 4px 4px 0 var(--amarillo); }
+  .sabor-card:nth-child(3n+2) { box-shadow: 4px 4px 0 var(--rosa); }
+  .sabor-card:nth-child(3n) { box-shadow: 4px 4px 0 var(--azul); }
+  .sabor-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 10px; }
+  .sabor-card h3 { font-size: 1.2rem; overflow-wrap: anywhere; }
+  .sabor-card .fila { margin-top: auto; flex-wrap: wrap; }
+  .sabor-card .precio { font-size: 1.1rem; }
   .catalogo.dos { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 560px; }
   .dona.pastel img { aspect-ratio: 4 / 3; }
 
@@ -166,6 +172,7 @@
   @media (max-width: 860px) {
     .catalogo { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .catalogo.dos { max-width: none; }
+    .sabores { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .cajas { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
     .caja.destacada { grid-column: 1 / -1; }
     .caja.destacada img { aspect-ratio: 16 / 9; }
@@ -180,6 +187,8 @@
     .catalogo { gap: 14px; }
     .dona h3 { font-size: 1.1rem; }
     .stepper button { width: 32px; height: 32px; }
+    .sabores { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .dona .fila { flex-wrap: wrap; }
     .caja h3 { font-size: 1.1rem; }
     .caja-body { padding: 12px; }
     .caja .precio { font-size: 1.3rem; }

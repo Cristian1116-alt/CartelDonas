@@ -57,8 +57,12 @@
     <div class="wrap">
       <div class="eyebrow">Catálogo</div>
       <h2>Escoge tus donas</h2>
-      <p class="lead">Todas a $5.000. Suma las que quieras con los botones y abajo te armamos el mensaje para WhatsApp. En la rellena escoges el sabor.</p>
+      <p class="lead">Todas a $5.000. Suma las que quieras con los botones y abajo te armamos el mensaje para WhatsApp.</p>
       <div class="catalogo" id="lista"></div>
+
+      <h3 class="sub-sabores">Donas por sabor</h3>
+      <p class="lead">Cada sabor se pide por separado, también a $5.000.</p>
+      <div class="sabores" id="lista-sabores"></div>
     </div>
   </section>
 
@@ -118,87 +122,73 @@
   // Catálogo editable: cambia nombres, descripciones, sabores, precios o fotos aquí.
   const WHATSAPP = "573052227062";
   const PRECIO = 5000;
-  const SABORES = ["Arequipe", "Chantilly", "Chocobruce", "Chocochantilly", "Chocolate", "ChocoManí", "Chocopepitas", "Fresa", "Maracuyá", "Mora"];
   const DONAS = [
-    { id: "rellena", nombre: "Dona rellena azucarada", desc: "Cubierta de azúcar y rellena del sabor que escojas.", img: "img/c-rellenas-azucar.jpg", sabores: SABORES },
+    { id: "rellena", nombre: "Dona rellena azucarada", desc: "Cubierta de azúcar y rellena.", img: "img/c-rellenas-azucar.jpg" },
     { id: "dorada", nombre: "Dona dorada con crema", desc: "Dona dorada con crema por encima.", img: "img/c-crema.jpg" },
     { id: "choco-crema", nombre: "Chocolate con crema", desc: "Cobertura de chocolate con crema.", img: "img/c-chocolate-crema.jpg" },
     { id: "choco-crocante", nombre: "Chocolate crocante", desc: "Cobertura de chocolate con topping crocante.", img: "img/c-chocolate-topping.jpg" }
   ];
+  // Donas por sabor: cada una se pide por separado. Para agregar foto, pon img: "img/archivo.jpg".
+  const SABORES = ["Arequipe", "Chantilly", "Chocobruce", "Chocochantilly", "Chocolate", "ChocoManí", "Chocopepitas", "Fresa", "Maracuyá", "Mora"]
+    .map(s => ({ id: "sabor-" + s.toLowerCase().normalize("NFD").replace(/[^a-z]/g, ""), sabor: s, nombre: "Dona de " + s }));
   const PASTELES = [
-    { id: "pastel-pollo", nombre: "Pastel de pollo", desc: "Hojaldre dorado relleno de pollo.", img: "img/pasteles.jpg", unidad: "pastel" },
-    { id: "pastel-jyq", nombre: "Pastel de jamón y queso", desc: "Hojaldre dorado relleno de jamón y queso.", img: "img/pasteles.jpg", unidad: "pastel" }
+    { id: "pastel-pollo", nombre: "Pastel de pollo", desc: "Hojaldre dorado relleno de pollo.", img: "img/pasteles.jpg" },
+    { id: "pastel-jyq", nombre: "Pastel de jamón y queso", desc: "Hojaldre dorado relleno de jamón y queso.", img: "img/pasteles.jpg" }
   ];
 
   const pesos = n => "$" + n.toLocaleString("es-CO");
   const wa = texto => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(texto)}`;
-  const PRODUCTOS = [...DONAS, ...PASTELES];
-  // Carrito: clave "id" o "id|sabor" -> cantidad
-  const carrito = new Map();
-  const claveDe = p => p.sabores ? `${p.id}|${document.getElementById("s-" + p.id).value}` : p.id;
-  const nombreDe = clave => {
-    const [id, sabor] = clave.split("|");
-    const p = PRODUCTOS.find(x => x.id === id);
-    return sabor ? `${p.nombre} de ${sabor}` : p.nombre;
-  };
+  const PRODUCTOS = [...DONAS, ...SABORES, ...PASTELES];
+  const cant = Object.fromEntries(PRODUCTOS.map(p => [p.id, 0]));
 
+  const stepper = p => `
+          <div class="stepper">
+            <button type="button" data-id="${p.id}" data-d="-1" aria-label="Quitar una: ${p.nombre}">−</button>
+            <output id="q-${p.id}">0</output>
+            <button type="button" data-id="${p.id}" data-d="1" aria-label="Agregar una: ${p.nombre}">+</button>
+          </div>`;
   const tarjeta = (p, extra = "") => `
     <article class="dona ${extra}">
       <img src="${p.img}" alt="${p.nombre}" loading="lazy">
       <div class="dona-body">
         <h3>${p.nombre}</h3>
         <p>${p.desc}</p>
-        ${p.sabores ? `
-        <label class="sabor">Sabor del relleno
-          <select id="s-${p.id}" data-sabor="${p.id}">${p.sabores.map(s => `<option>${s}</option>`).join("")}</select>
-        </label>
-        <span class="escogidos" id="e-${p.id}"></span>` : ""}
         <div class="fila">
-          <span class="precio">${pesos(PRECIO)}</span>
-          <div class="stepper">
-            <button type="button" data-id="${p.id}" data-d="-1" aria-label="Quitar uno: ${p.nombre}">−</button>
-            <output id="q-${p.id}">0</output>
-            <button type="button" data-id="${p.id}" data-d="1" aria-label="Agregar uno: ${p.nombre}">+</button>
-          </div>
+          <span class="precio">${pesos(PRECIO)}</span>${stepper(p)}
         </div>
+      </div>
+    </article>`;
+  const tarjetaSabor = p => `
+    <article class="sabor-card">
+      ${p.img ? `<img src="${p.img}" alt="${p.nombre}" loading="lazy">` : ""}
+      <h3>${p.sabor}</h3>
+      <div class="fila">
+        <span class="precio">${pesos(PRECIO)}</span>${stepper(p)}
       </div>
     </article>`;
 
   document.getElementById("lista").innerHTML = DONAS.map(p => tarjeta(p)).join("");
+  document.getElementById("lista-sabores").innerHTML = SABORES.map(tarjetaSabor).join("");
   document.getElementById("lista-pasteles").innerHTML = PASTELES.map(p => tarjeta(p, "pastel")).join("");
-
-  function pintarProducto(p) {
-    document.getElementById("q-" + p.id).textContent = carrito.get(claveDe(p)) || 0;
-    if (p.sabores) {
-      const lista = [...carrito].filter(([k]) => k.startsWith(p.id + "|")).map(([k, n]) => `${n} ${k.split("|")[1]}`);
-      document.getElementById("e-" + p.id).textContent = lista.length ? "Llevas: " + lista.join(", ") : "";
-    }
-  }
 
   document.querySelector("main").addEventListener("click", e => {
     const b = e.target.closest("button[data-id]");
     if (!b) return;
-    const p = PRODUCTOS.find(x => x.id === b.dataset.id);
-    const k = claveDe(p);
-    const n = Math.max(0, (carrito.get(k) || 0) + Number(b.dataset.d));
-    n ? carrito.set(k, n) : carrito.delete(k);
-    pintarProducto(p);
+    const id = b.dataset.id;
+    cant[id] = Math.max(0, cant[id] + Number(b.dataset.d));
+    document.getElementById("q-" + id).textContent = cant[id];
     actualizar();
-  });
-  document.querySelector("main").addEventListener("change", e => {
-    const id = e.target.dataset && e.target.dataset.sabor;
-    if (id) pintarProducto(PRODUCTOS.find(x => x.id === id));
   });
 
   function actualizar() {
-    const items = [...carrito].filter(([, n]) => n > 0);
-    const unidades = items.reduce((s, [, n]) => s + n, 0);
+    const items = PRODUCTOS.filter(p => cant[p.id] > 0);
+    const unidades = items.reduce((s, p) => s + cant[p.id], 0);
     const total = unidades * PRECIO;
     document.getElementById("total").textContent = pesos(total);
     document.getElementById("detalle").textContent = unidades
-      ? `${unidades} producto${unidades > 1 ? "s" : ""}: ` + items.map(([k, n]) => `${n} ${nombreDe(k)}`).join(", ")
+      ? `${unidades} producto${unidades > 1 ? "s" : ""}: ` + items.map(p => `${cant[p.id]} ${p.nombre}`).join(", ")
       : "Aún no has escogido nada";
-    const lineas = items.map(([k, n]) => `• ${n} x ${nombreDe(k)} (${pesos(n * PRECIO)})`);
+    const lineas = items.map(p => `• ${cant[p.id]} x ${p.nombre} (${pesos(cant[p.id] * PRECIO)})`);
     const texto = unidades
       ? `¡Hola, Cartel de las Donas! Quiero hacer este pedido:\n${lineas.join("\n")}\nTotal: ${pesos(total)}\n\nMi nombre: \nDirección o punto de entrega: `
       : "¡Hola, Cartel de las Donas! Quiero hacer un pedido.";
