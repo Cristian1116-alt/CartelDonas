@@ -57,11 +57,8 @@
     <div class="wrap">
       <div class="eyebrow">Catálogo</div>
       <h2>Escoge tus donas</h2>
-      <p class="lead">Todas a $5.000. Suma las que quieras con los botones y abajo te armamos el mensaje para WhatsApp.</p>
-      <div class="catalogo" id="lista"></div>
-
+      <p class="lead">Todas a $5.000. Cada sabor se pide por separado: suma las que quieras con los botones y abajo te armamos el mensaje para WhatsApp.</p>
       <h3 class="sub-sabores">Donas por sabor</h3>
-      <p class="lead">Cada sabor se pide por separado, también a $5.000.</p>
       <div class="sabores" id="lista-sabores"></div>
     </div>
   </section>
@@ -122,15 +119,11 @@
   // Catálogo editable: cambia nombres, descripciones, sabores, precios o fotos aquí.
   const WHATSAPP = "573052227062";
   const PRECIO = 5000;
-  const DONAS = [
-    { id: "rellena", nombre: "Dona rellena azucarada", desc: "Cubierta de azúcar y rellena.", img: "img/c-rellenas-azucar.jpg" },
-    { id: "dorada", nombre: "Dona dorada con crema", desc: "Dona dorada con crema por encima.", img: "img/c-crema.jpg" },
-    { id: "choco-crema", nombre: "Chocolate con crema", desc: "Cobertura de chocolate con crema.", img: "img/c-chocolate-crema.jpg" },
-    { id: "choco-crocante", nombre: "Chocolate crocante", desc: "Cobertura de chocolate con topping crocante.", img: "img/c-chocolate-topping.jpg" }
-  ];
-  // Donas por sabor: cada una se pide por separado. Para agregar foto, pon img: "img/archivo.jpg".
+  // Donas por sabor: cada una se pide por separado.
+  // Para poner la foto de un sabor, agrega su archivo en FOTOS, por ejemplo: Arequipe: "img/arequipe.jpg".
+  const FOTOS = {};
   const SABORES = ["Arequipe", "Chantilly", "Chocobruce", "Chocochantilly", "Chocolate", "ChocoManí", "Chocopepitas", "Fresa", "Maracuyá", "Mora"]
-    .map(s => ({ id: "sabor-" + s.toLowerCase().normalize("NFD").replace(/[^a-z]/g, ""), sabor: s, nombre: "Dona de " + s }));
+    .map(s => ({ id: "sabor-" + s.toLowerCase().normalize("NFD").replace(/[^a-z]/g, ""), sabor: s, nombre: "Dona de " + s, img: FOTOS[s] }));
   const PASTELES = [
     { id: "pastel-pollo", nombre: "Pastel de pollo", desc: "Hojaldre dorado relleno de pollo.", img: "img/pasteles.jpg" },
     { id: "pastel-jyq", nombre: "Pastel de jamón y queso", desc: "Hojaldre dorado relleno de jamón y queso.", img: "img/pasteles.jpg" }
@@ -138,7 +131,7 @@
 
   const pesos = n => "$" + n.toLocaleString("es-CO");
   const wa = texto => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(texto)}`;
-  const PRODUCTOS = [...DONAS, ...SABORES, ...PASTELES];
+  const PRODUCTOS = [...SABORES, ...PASTELES];
   const cant = Object.fromEntries(PRODUCTOS.map(p => [p.id, 0]));
 
   const stepper = p => `
@@ -160,14 +153,13 @@
     </article>`;
   const tarjetaSabor = p => `
     <article class="sabor-card">
-      ${p.img ? `<img src="${p.img}" alt="${p.nombre}" loading="lazy">` : ""}
+      ${p.img ? `<img src="${p.img}" alt="${p.nombre}" loading="lazy">` : `<div class="foto-sabor" aria-hidden="true"><span>Foto próximamente</span></div>`}
       <h3>${p.sabor}</h3>
       <div class="fila">
         <span class="precio">${pesos(PRECIO)}</span>${stepper(p)}
       </div>
     </article>`;
 
-  document.getElementById("lista").innerHTML = DONAS.map(p => tarjeta(p)).join("");
   document.getElementById("lista-sabores").innerHTML = SABORES.map(tarjetaSabor).join("");
   document.getElementById("lista-pasteles").innerHTML = PASTELES.map(p => tarjeta(p, "pastel")).join("");
 

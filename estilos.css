@@ -120,7 +120,9 @@
   .stepper button:hover { background: var(--rosa); color: #fff; }
   .stepper output { min-width: 32px; text-align: center; font-weight: 800; font-variant-numeric: tabular-nums; }
 
-  .sub-sabores { font-size: clamp(1.5rem, 4vw, 2rem); margin-top: 44px; }
+  .sub-sabores { font-size: clamp(1.5rem, 4vw, 2rem); margin-top: 28px; }
+  .foto-sabor { aspect-ratio: 1 / 1; border-radius: 10px; border: 2px dashed var(--negro); display: grid; place-items: center; background: repeating-linear-gradient(45deg, #fff 0 12px, #fff4c2 12px 24px); }
+  .foto-sabor span { font-size: .72rem; font-weight: 800; background: var(--rosa); color: #fff; padding: 3px 10px; border-radius: 999px; text-align: center; }
   .sabores { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; margin-top: 20px; }
   .sabor-card { background: #fff; border: 3px solid var(--negro); border-radius: 16px; padding: 12px; display: flex; flex-direction: column; gap: 6px; box-shadow: 4px 4px 0 var(--amarillo); }
   .sabor-card:nth-child(3n+2) { box-shadow: 4px 4px 0 var(--rosa); }
