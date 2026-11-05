@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>El Cartel de las Donas</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="UNIDOS, El Cartel de las Donas. Donas rellenas y con cobertura a $5.000 cada una. Haz tu pedido por WhatsApp.">
+<meta name="description" content="UNIDOS, El Cartel de las Donas. Donas rellenas, con cobertura y pasteles a $5.000 cada uno, y cajas para compartir. Haz tu pedido por WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@500;700;800&display=swap">
@@ -130,6 +130,26 @@
   .stepper button:hover { background: var(--rosa); color: #fff; }
   .stepper output { min-width: 32px; text-align: center; font-weight: 800; font-variant-numeric: tabular-nums; }
 
+  .sabor { display: flex; flex-direction: column; gap: 4px; margin-top: 4px; font-size: .8rem; font-weight: 800; }
+  .sabor select { font: 700 .95rem var(--body); color: var(--negro); padding: 8px 10px; border: 2px solid var(--negro); border-radius: 12px; background: var(--rosa-suave); cursor: pointer; width: 100%; }
+  .escogidos { font-size: .8rem; color: #b0105a; font-weight: 700; min-height: 1.2em; }
+  .catalogo.dos { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 560px; }
+  .dona.pastel img { aspect-ratio: 4 / 3; }
+
+  /* Cajas */
+  .cajas-sec { background: var(--amarillo); }
+  .cajas-sec .eyebrow { color: var(--negro); }
+  .cajas-sec .lead { color: var(--negro); }
+  .cajas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 28px; }
+  .caja { background: #fff; border: 3px solid var(--negro); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 5px 5px 0 var(--negro); }
+  .caja img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; border-bottom: 3px solid var(--negro); }
+  .caja-body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .caja h3 { font-size: 1.45rem; }
+  .caja p { margin: 0; color: var(--gris); font-size: .92rem; flex: 1; }
+  .caja .precio { font-size: 1.6rem; color: var(--rosa); }
+  .caja.destacada { box-shadow: 5px 5px 0 var(--rosa); }
+  .caja .btn { width: 100%; }
+
   /* Info */
   .info { background: var(--negro); color: #fff; }
   .info .eyebrow { color: var(--amarillo); }
@@ -155,16 +175,25 @@
 
   @media (max-width: 860px) {
     .catalogo { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .catalogo.dos { max-width: none; }
+    .cajas { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .caja.destacada { grid-column: 1 / -1; }
+    .caja.destacada img { aspect-ratio: 16 / 9; }
     .info-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 640px) {
     .hero .wrap { grid-template-columns: 1fr; padding-block: 28px 36px; }
     .logo-box { width: min(78%, 300px); order: -1; }
-    .top nav { display: none; }
+    .top nav { gap: 12px; font-size: .85rem; }
+    .top b { font-size: 1rem; }
     .galeria { grid-template-columns: 1fr; }
     .catalogo { gap: 14px; }
     .dona h3 { font-size: 1.1rem; }
     .stepper button { width: 32px; height: 32px; }
+    .caja h3 { font-size: 1.1rem; }
+    .caja-body { padding: 12px; }
+    .caja .precio { font-size: 1.3rem; }
+    .caja .btn { padding: 10px 8px; font-size: .88rem; }
   }
   @media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
 </style>
@@ -175,6 +204,7 @@
     <b>El Cartel <span>de las Donas</span></b>
     <nav aria-label="Secciones">
       <a href="#catalogo">Catálogo</a>
+      <a href="#cajas">Cajas</a>
       <a href="#contacto">Contacto</a>
     </nav>
   </div>
@@ -185,10 +215,11 @@
     <div class="wrap">
       <div>
         <h1>Hoy, cada dona <em>cuenta.</em></h1>
-        <p>Donas rellenas, con cobertura y bien azucaradas, hechas por UNIDOS. Arma tu pedido aquí y nos lo mandas por WhatsApp.</p>
+        <p>Donas rellenas, con cobertura y bien azucaradas, y pasteles recién horneados, hechos por UNIDOS. Arma tu pedido aquí y nos lo mandas por WhatsApp.</p>
         <span class="precio-sello">$5.000 <small>c/u</small></span>
         <div class="ctas">
           <a class="btn" href="#catalogo">Ver las donas</a>
+          <a class="btn" href="#cajas">Ver las cajas</a>
           <a class="btn wa" id="wa-hero" href="https://wa.me/573052227062" target="_blank" rel="noopener">Escribir por WhatsApp</a>
         </div>
       </div>
@@ -213,8 +244,26 @@
     <div class="wrap">
       <div class="eyebrow">Catálogo</div>
       <h2>Escoge tus donas</h2>
-      <p class="lead">Todas a $5.000. Suma las que quieras con los botones y abajo te armamos el mensaje para WhatsApp.</p>
+      <p class="lead">Todas a $5.000. Suma las que quieras con los botones y abajo te armamos el mensaje para WhatsApp. En la rellena escoges el sabor.</p>
       <div class="catalogo" id="lista"></div>
+    </div>
+  </section>
+
+  <section id="pasteles" style="padding-top: 0">
+    <div class="wrap">
+      <div class="eyebrow">Pasteles</div>
+      <h2>También hay pasteles</h2>
+      <p class="lead">Hojaldre dorado, a $5.000 la unidad. Se suman al mismo pedido.</p>
+      <div class="catalogo dos" id="lista-pasteles"></div>
+    </div>
+  </section>
+
+  <section class="cajas-sec" id="cajas">
+    <div class="wrap">
+      <div class="eyebrow">Para compartir</div>
+      <h2>Cajas del cartel</h2>
+      <p class="lead">Pídelas directo por WhatsApp. Te confirmamos sabores y entrega por chat.</p>
+      <div class="cajas" id="lista-cajas"></div>
     </div>
   </section>
 
@@ -225,7 +274,7 @@
       <div class="info-grid">
         <div class="info-card">
           <h3>WhatsApp</h3>
-          <p class="num">305 222 7062</p>
+          <p class="num">+57 305 222 7062</p>
           <p>Escríbenos o arma el pedido en el catálogo. Confirmamos disponibilidad y entrega por chat.</p>
         </div>
         <div class="info-card">
@@ -254,68 +303,119 @@
   <div class="wrap">
     <div class="resumen" aria-live="polite">
       <strong id="total">$0</strong>
-      <span id="detalle">Aún no has escogido donas</span>
+      <span id="detalle">Aún no has escogido nada</span>
     </div>
     <a class="btn wa" id="enviar" href="https://wa.me/573052227062" target="_blank" rel="noopener" aria-disabled="true">Pedir por WhatsApp</a>
   </div>
 </div>
 
 <script>
-  // Catálogo editable: cambia nombres, descripciones o fotos aquí.
-  // Nombres provisionales tomados de las fotos; confirmar sabores con la dueña.
+  // Catálogo editable: cambia nombres, descripciones, sabores, precios o fotos aquí.
   const WHATSAPP = "573052227062";
   const PRECIO = 5000;
+  const SABORES = ["Arequipe", "Chantilly", "Chocobruce", "Chocochantilly", "Chocolate", "ChocoManí", "Chocopepitas", "Fresa", "Maracuyá", "Mora"];
   const DONAS = [
-    { id: "rellena", nombre: "Rellena azucarada", desc: "Dona cubierta de azúcar con relleno. Sabor del relleno por confirmar.", img: "img/c-rellenas-azucar.jpg" },
-    { id: "crema", nombre: "Rellena de crema", desc: "Dona dorada con crema por encima. Ingredientes por confirmar.", img: "img/c-crema.jpg" },
-    { id: "choco-crema", nombre: "Chocolate con crema", desc: "Cobertura de chocolate con crema. Ingredientes por confirmar.", img: "img/c-chocolate-crema.jpg" },
-    { id: "choco-topping", nombre: "Chocolate crocante", desc: "Cobertura de chocolate con topping crocante. Ingredientes por confirmar.", img: "img/c-chocolate-topping.jpg" }
+    { id: "rellena", nombre: "Dona rellena azucarada", desc: "Cubierta de azúcar y rellena del sabor que escojas.", img: "img/c-rellenas-azucar.jpg", sabores: SABORES },
+    { id: "dorada", nombre: "Dona dorada con crema", desc: "Dona dorada con crema por encima.", img: "img/c-crema.jpg" },
+    { id: "choco-crema", nombre: "Chocolate con crema", desc: "Cobertura de chocolate con crema.", img: "img/c-chocolate-crema.jpg" },
+    { id: "choco-crocante", nombre: "Chocolate crocante", desc: "Cobertura de chocolate con topping crocante.", img: "img/c-chocolate-topping.jpg" }
   ];
-  const cant = Object.fromEntries(DONAS.map(d => [d.id, 0]));
-  const pesos = n => "$" + n.toLocaleString("es-CO");
+  const PASTELES = [
+    { id: "pastel-pollo", nombre: "Pastel de pollo", desc: "Hojaldre dorado relleno de pollo.", img: "img/pasteles.jpg", unidad: "pastel" },
+    { id: "pastel-jyq", nombre: "Pastel de jamón y queso", desc: "Hojaldre dorado relleno de jamón y queso.", img: "img/pasteles.jpg", unidad: "pastel" }
+  ];
+  const CAJAS = [
+    { nombre: "CAJA x 6", precio: 30000, desc: "6 donas para antojarse.", img: "img/caja-x6.jpg" },
+    { nombre: "CAJA x 22", precio: 100000, desc: "22 donas para la oficina o la familia.", img: "img/caja-x22.jpg" },
+    { nombre: "CAJA x 30", precio: 135000, desc: "30 donas para la fiesta.", img: "img/caja-x30.jpg" },
+    { nombre: "CAJA Pasteles y Donas", precio: 100000, desc: "Lo dulce y lo salado en una sola caja.", img: "img/caja-pasteles-donas.jpg" },
+    { nombre: "DONATÓN x 100", precio: 430000, desc: "50 donas y 50 pasteles para eventos grandes.", img: "img/donaton-x100.jpg", destacada: true }
+  ];
 
-  const lista = document.getElementById("lista");
-  lista.innerHTML = DONAS.map(d => `
-    <article class="dona">
-      <img src="${d.img}" alt="${d.nombre}" loading="lazy">
+  const pesos = n => "$" + n.toLocaleString("es-CO");
+  const wa = texto => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(texto)}`;
+  const PRODUCTOS = [...DONAS, ...PASTELES];
+  // Carrito: clave "id" o "id|sabor" -> cantidad
+  const carrito = new Map();
+  const claveDe = p => p.sabores ? `${p.id}|${document.getElementById("s-" + p.id).value}` : p.id;
+  const nombreDe = clave => {
+    const [id, sabor] = clave.split("|");
+    const p = PRODUCTOS.find(x => x.id === id);
+    return sabor ? `${p.nombre} de ${sabor}` : p.nombre;
+  };
+
+  const tarjeta = (p, extra = "") => `
+    <article class="dona ${extra}">
+      <img src="${p.img}" alt="${p.nombre}" loading="lazy">
       <div class="dona-body">
-        <span class="chip">Nombre provisional</span>
-        <h3>${d.nombre}</h3>
-        <p>${d.desc}</p>
+        <h3>${p.nombre}</h3>
+        <p>${p.desc}</p>
+        ${p.sabores ? `
+        <label class="sabor">Sabor del relleno
+          <select id="s-${p.id}" data-sabor="${p.id}">${p.sabores.map(s => `<option>${s}</option>`).join("")}</select>
+        </label>
+        <span class="escogidos" id="e-${p.id}"></span>` : ""}
         <div class="fila">
           <span class="precio">${pesos(PRECIO)}</span>
           <div class="stepper">
-            <button type="button" data-id="${d.id}" data-d="-1" aria-label="Quitar una ${d.nombre}">−</button>
-            <output id="q-${d.id}">0</output>
-            <button type="button" data-id="${d.id}" data-d="1" aria-label="Agregar una ${d.nombre}">+</button>
+            <button type="button" data-id="${p.id}" data-d="-1" aria-label="Quitar uno: ${p.nombre}">−</button>
+            <output id="q-${p.id}">0</output>
+            <button type="button" data-id="${p.id}" data-d="1" aria-label="Agregar uno: ${p.nombre}">+</button>
           </div>
         </div>
       </div>
+    </article>`;
+
+  document.getElementById("lista").innerHTML = DONAS.map(p => tarjeta(p)).join("");
+  document.getElementById("lista-pasteles").innerHTML = PASTELES.map(p => tarjeta(p, "pastel")).join("");
+  document.getElementById("lista-cajas").innerHTML = CAJAS.map(c => `
+    <article class="caja${c.destacada ? " destacada" : ""}">
+      <img src="${c.img}" alt="${c.nombre}" loading="lazy">
+      <div class="caja-body">
+        <h3>${c.nombre}</h3>
+        <p>${c.desc}</p>
+        <span class="precio">${pesos(c.precio)}</span>
+        <a class="btn wa" href="${wa("Quiero pedir " + c.nombre)}" target="_blank" rel="noopener">Pedir esta caja</a>
+      </div>
     </article>`).join("");
 
-  lista.addEventListener("click", e => {
+  function pintarProducto(p) {
+    document.getElementById("q-" + p.id).textContent = carrito.get(claveDe(p)) || 0;
+    if (p.sabores) {
+      const lista = [...carrito].filter(([k]) => k.startsWith(p.id + "|")).map(([k, n]) => `${n} ${k.split("|")[1]}`);
+      document.getElementById("e-" + p.id).textContent = lista.length ? "Llevas: " + lista.join(", ") : "";
+    }
+  }
+
+  document.querySelector("main").addEventListener("click", e => {
     const b = e.target.closest("button[data-id]");
     if (!b) return;
-    const id = b.dataset.id;
-    cant[id] = Math.max(0, cant[id] + Number(b.dataset.d));
-    document.getElementById("q-" + id).textContent = cant[id];
+    const p = PRODUCTOS.find(x => x.id === b.dataset.id);
+    const k = claveDe(p);
+    const n = Math.max(0, (carrito.get(k) || 0) + Number(b.dataset.d));
+    n ? carrito.set(k, n) : carrito.delete(k);
+    pintarProducto(p);
     actualizar();
+  });
+  document.querySelector("main").addEventListener("change", e => {
+    const id = e.target.dataset && e.target.dataset.sabor;
+    if (id) pintarProducto(PRODUCTOS.find(x => x.id === id));
   });
 
   function actualizar() {
-    const items = DONAS.filter(d => cant[d.id] > 0);
-    const unidades = items.reduce((s, d) => s + cant[d.id], 0);
+    const items = [...carrito].filter(([, n]) => n > 0);
+    const unidades = items.reduce((s, [, n]) => s + n, 0);
     const total = unidades * PRECIO;
     document.getElementById("total").textContent = pesos(total);
     document.getElementById("detalle").textContent = unidades
-      ? `${unidades} dona${unidades > 1 ? "s" : ""}: ` + items.map(d => `${cant[d.id]} ${d.nombre}`).join(", ")
-      : "Aún no has escogido donas";
-    const lineas = items.map(d => `• ${cant[d.id]} x ${d.nombre} (${pesos(cant[d.id] * PRECIO)})`);
+      ? `${unidades} producto${unidades > 1 ? "s" : ""}: ` + items.map(([k, n]) => `${n} ${nombreDe(k)}`).join(", ")
+      : "Aún no has escogido nada";
+    const lineas = items.map(([k, n]) => `• ${n} x ${nombreDe(k)} (${pesos(n * PRECIO)})`);
     const texto = unidades
       ? `¡Hola, Cartel de las Donas! Quiero hacer este pedido:\n${lineas.join("\n")}\nTotal: ${pesos(total)}\n\nMi nombre: \nDirección o punto de entrega: `
       : "¡Hola, Cartel de las Donas! Quiero hacer un pedido.";
     const btn = document.getElementById("enviar");
-    btn.href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(texto)}`;
+    btn.href = wa(texto);
     btn.setAttribute("aria-disabled", unidades ? "false" : "true");
   }
   actualizar();
