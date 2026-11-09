@@ -79,6 +79,7 @@ const FOTOS = {
   Arequipe: "img/arequipe.jpg",
   Chocochantilly: "img/chocochantilly.jpg",
   Chocolate: "img/chocolate.jpg",
+  "ChocoManí": "img/chocomani.jpg",
   Chocopepitas: "img/chocopepitas.jpg",
   Fresa: "img/fresa.jpg",
   "Maracuyá": "img/maracuya.jpg",
