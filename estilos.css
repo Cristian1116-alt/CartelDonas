@@ -165,7 +165,7 @@ a { color: inherit; }
 .precio-sello small { font-family: var(--body); font-weight: 800; font-size: .8rem; }
 
 .collage { position: relative; aspect-ratio: 1 / 1; width: min(100%, 480px); justify-self: center; }
-.collage img:not(.logo-flotante) {
+.collage img:not(.logo-flotante), .collage video {
   position: absolute; width: 58%; aspect-ratio: 1 / 1; object-fit: cover;
   border: 4px solid var(--negro); border-radius: 22px; box-shadow: 8px 8px 0 var(--negro);
   background: #fff; transition: transform .4s var(--suave);
@@ -173,7 +173,7 @@ a { color: inherit; }
 .collage .c1 { left: 0; top: 4%; transform: rotate(-6deg); z-index: 2; }
 .collage .c2 { right: 0; top: 0; transform: rotate(5deg); width: 50%; }
 .collage .c3 { right: 6%; bottom: 0; transform: rotate(-2deg); width: 52%; z-index: 1; }
-.collage img:not(.logo-flotante):hover { transform: rotate(0) scale(1.04); z-index: 4; }
+.collage img:not(.logo-flotante):hover, .collage video:hover { transform: rotate(0) scale(1.04); z-index: 4; }
 .logo-flotante {
   position: absolute; left: 4%; bottom: 2%; width: 34%; z-index: 3;
   border-radius: 50%; background: #fff; border: 4px solid var(--negro); box-shadow: 5px 5px 0 var(--negro);
