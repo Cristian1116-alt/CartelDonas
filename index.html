@@ -29,9 +29,9 @@
         <span class="precio-sello">$5.000 <small>c/u</small></span>
       </div>
       <div class="collage" aria-label="Fotos de nuestras donas y pasteles">
-        <img class="c1" src="img/caja-x22.jpg" alt="Caja de donas rellenas con el logo del Cartel" width="720" height="720">
+        <video class="c1" src="img/donas-rellenas-video.mp4" poster="img/donas-rellenas-video.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Video: bandejas de donas rellenas de fresa, chocolate y arequipe"></video>
         <img class="c2" src="img/caja-x30.jpg" alt="Donas con chocolate y chispas junto a donas rellenas" width="720" height="720" loading="lazy">
-        <img class="c3" src="img/pasteles.jpg" alt="Pasteles de hojaldre dorado" width="720" height="720" loading="lazy">
+        <video class="c3" src="img/donas-chocolate-video.mp4" poster="img/donas-chocolate-video.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Video: donas con chocolate y chispas de colores"></video>
         <img class="logo-flotante" src="img/logo.png" alt="Logo de UNIDOS, El Cartel de las Donas: un panda, una ardilla y un corgi rodeados de donas" width="335" height="332">
       </div>
     </div>
@@ -113,5 +113,6 @@
   if (PAGOS_PENDIENTE) $("pagos-pendiente").textContent = PAGOS_PENDIENTE; else $("pagos-pendiente").remove();
   animarEntradas();
 </script>
+<script>if (matchMedia("(prefers-reduced-motion: reduce)").matches) { document.querySelectorAll(".collage video").forEach(v => { v.removeAttribute("autoplay"); v.pause(); }); }</script>
 </body>
 </html>
