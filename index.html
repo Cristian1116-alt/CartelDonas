@@ -69,7 +69,7 @@
         <div class="info-card reveal">
           <h3>Entregas</h3>
           <p id="info-entregas"></p>
-          <span class="pendiente">[PENDIENTE: zonas y costo de domicilio]</span>
+          <p class="domicilio" id="info-domicilio"></p>
         </div>
         <div class="info-card reveal">
           <h3>Medios de pago</h3>
@@ -107,7 +107,8 @@
   $("num-pedidos").textContent = WHATSAPP_PEDIDOS_VISIBLE;
   $("link-ig").href = "https://instagram.com/" + INSTAGRAM;
   $("link-ig").textContent = "@" + INSTAGRAM;
-  $("info-entregas").textContent = AVISO_ATENCION + ". " + AVISO_ENTREGAS;
+  $("info-entregas").textContent = AVISO_ENTREGAS;
+  $("info-domicilio").textContent = DOMICILIO;
   $("info-pagos").textContent = PAGOS_TEXTO;
   if (PAGOS_PENDIENTE) $("pagos-pendiente").textContent = PAGOS_PENDIENTE; else $("pagos-pendiente").remove();
   animarEntradas();

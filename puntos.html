@@ -45,7 +45,7 @@
       <p class="horario"><span>Horario</span> ${esc(p.horario)}</p>
       ${p.detalle ? `<p class="detalle">${conPendientes(p.detalle)}</p>` : ""}
     </article>`).join("");
-  $("aviso-puntos").textContent = AVISO_ENTREGAS;
+  $("aviso-puntos").textContent = AVISO_ENTREGAS + " " + DOMICILIO;
   animarEntradas();
 </script>
 </body>

@@ -18,7 +18,8 @@ const PRECIO = 5000;
 
 // Aviso de atención y entregas.
 const AVISO_ATENCION = "Atención 24/7";
-const AVISO_ENTREGAS = "Las entregas se piden máximo un día antes, antes de las 2:00 p. m., para confirmar disponibilidad.";
+const AVISO_ENTREGAS = "Pide tu domicilio el día anterior, antes de las 2:00 p. m., para confirmar disponibilidad.";
+const DOMICILIO = "Domicilio: $3.000 en Cali, Palmira y Yumbo.";
 
 // Medios de pago.
 const PAGOS_TEXTO = "Nequi y efectivo.";
