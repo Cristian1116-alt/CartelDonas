@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Puntos físicos · El Cartel de las Donas</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Puntos físicos de El Cartel de las Donas: Ingenio y Estadio, de 9:30 a. m. a 1:30 a. m.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@500;700;800;900&display=swap">
+<link rel="stylesheet" href="estilos.css">
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+<header class="top"></header>
+
+  <div class="pagina-cabeza azul">
+    <div class="wrap">
+      <div class="eyebrow">Dónde estamos</div>
+      <h1>Puntos físicos</h1>
+      <p class="lead">Pásate por cualquiera de nuestros puntos.</p>
+    </div>
+  </div>
+<main>
+  <section>
+    <div class="wrap">
+      <div class="puntos" id="lista-puntos"></div>
+      <div class="cta-final reveal">
+        <p>¿Prefieres que te lo llevemos? <span id="aviso-puntos"></span></p>
+        <a class="btn grande amarillo" href="cajas.html">Ver el catálogo</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="pie"></footer>
+<script src="datos.js"></script>
+<script src="sitio.js"></script>
+<script>
+  $("lista-puntos").innerHTML = PUNTOS.map((p, i) => `
+    <article class="punto reveal" style="--d:${i * 80}ms">
+      <span class="pin" aria-hidden="true">📍</span>
+      <h2>${esc(p.nombre)}</h2>
+      <p class="horario"><span>Horario</span> ${esc(p.horario)}</p>
+      ${p.detalle ? `<p class="detalle">${conPendientes(p.detalle)}</p>` : ""}
+    </article>`).join("");
+  $("aviso-puntos").textContent = AVISO_ENTREGAS;
+  animarEntradas();
+</script>
+</body>
+</html>

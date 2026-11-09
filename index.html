@@ -5,38 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>El Cartel de las Donas</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="UNIDOS, El Cartel de las Donas. Donas por sabor y pasteles a $5.000 cada uno, cajas para compartir y cajas para donar. Haz tu pedido por WhatsApp.">
+<meta name="description" content="UNIDOS, El Cartel de las Donas. Donas por sabor y pasteles a $5.000 cada uno y cajas para compartir. Haz tu pedido por WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@500;700;800;900&display=swap">
 <link rel="stylesheet" href="estilos.css">
 <script>document.documentElement.classList.add("js");</script>
 </head>
-<body class="con-pedido">
-<header class="top">
-  <div class="wrap">
-    <a class="marca" href="#inicio"><b>El Cartel <span>de las Donas</span></b></a>
-    <nav aria-label="Secciones">
-      <a href="#catalogo">Catálogo</a>
-      <a href="cajas.html">Cajas</a>
-      <a href="#donaciones">Dona una caja</a>
-      <a href="#puntos">Dónde estamos</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
-  </div>
-</header>
+<body>
+<header class="top"></header>
 
-<main id="inicio">
-  <!-- PORTADA -->
+<main>
   <div class="hero">
     <div class="wrap">
       <div class="hero-texto">
         <span class="etiqueta-hero"><span class="punto-vivo" aria-hidden="true"></span> Atención 24/7 por WhatsApp</span>
         <h1>Hoy, cada dona <em>cuenta.</em></h1>
-        <p>Donas por sabor y pasteles recién horneados, hechos por UNIDOS. Arma tu pedido aquí y nos lo mandas por WhatsApp.</p>
+        <p>Donas por sabor y pasteles recién horneados, hechos por UNIDOS. Arma tu pedido y nos lo mandas por WhatsApp.</p>
         <div class="ctas">
-          <a class="btn grande amarillo" href="#catalogo">Ver las donas</a>
-          <a class="btn grande" href="cajas.html">Ver cajas</a>
+          <a class="btn grande amarillo" href="cajas.html">Ver el catálogo</a>
+          <a class="btn grande" href="puntos.html">Dónde estamos</a>
         </div>
         <span class="precio-sello">$5.000 <small>c/u</small></span>
       </div>
@@ -49,91 +37,18 @@
     </div>
   </div>
 
-  <!-- CINTA -->
-  <div class="cinta" aria-hidden="true">
-    <div class="cinta-track">
-      <span>Arequipe</span><span>Chantilly</span><span>Chocobruce</span><span>Chocochantilly</span><span>Chocolate</span><span>ChocoManí</span><span>Chocopepitas</span><span>Fresa</span><span>Maracuyá</span><span>Mora</span>
-      <span>Arequipe</span><span>Chantilly</span><span>Chocobruce</span><span>Chocochantilly</span><span>Chocolate</span><span>ChocoManí</span><span>Chocopepitas</span><span>Fresa</span><span>Maracuyá</span><span>Mora</span>
-    </div>
-  </div>
+  <div class="cinta" aria-hidden="true"><div class="cinta-track" id="cinta"></div></div>
 
-  <!-- CATÁLOGO -->
-  <section id="catalogo">
+  <section>
     <div class="wrap">
       <header class="cabeza reveal">
-        <div class="eyebrow">Catálogo</div>
-        <h2>Escoge tus donas</h2>
-        <p class="lead">Todas a $5.000. Suma las que quieras con los botones y abajo te armamos el mensaje para WhatsApp.</p>
+        <div class="eyebrow">Explora</div>
+        <h2>¿Qué estás buscando?</h2>
       </header>
-      <div class="aviso-entregas reveal" id="aviso-catalogo"></div>
-      <div class="sabores" id="lista-sabores"></div>
+      <div class="tarjetas-portada" id="tarjetas"></div>
     </div>
   </section>
 
-  <section id="pasteles" class="sin-arriba">
-    <div class="wrap">
-      <header class="cabeza reveal">
-        <div class="eyebrow">Pasteles</div>
-        <h2>También hay pasteles</h2>
-        <p class="lead">Hojaldre dorado, a $5.000 la unidad. Se suman al mismo pedido.</p>
-      </header>
-      <div class="catalogo dos" id="lista-pasteles"></div>
-    </div>
-  </section>
-
-  <!-- DONACIONES -->
-  <section class="donaciones" id="donaciones">
-    <div class="wrap">
-      <div class="donar-intro">
-        <header class="cabeza reveal">
-          <div class="eyebrow">Labor social</div>
-          <h2 id="donar-titulo"></h2>
-          <div class="donar-texto" id="donar-texto"></div>
-        </header>
-        <div class="donar-lado reveal">
-          <div class="dato" id="donar-dato"></div>
-          <a class="btn grande wa" id="btn-donar" href="#" target="_blank" rel="noopener"><span class="ico-wa" aria-hidden="true"></span> Quiero donar una caja</a>
-          <p class="nota-pendiente" id="donar-pendiente"></p>
-        </div>
-      </div>
-      <div class="galeria-donaciones" id="galeria-donaciones"></div>
-    </div>
-  </section>
-
-  <!-- PUNTOS FÍSICOS Y UNIVERSIDADES -->
-  <section id="puntos">
-    <div class="wrap">
-      <header class="cabeza reveal">
-        <div class="eyebrow">Dónde estamos</div>
-        <h2>Puntos físicos</h2>
-        <p class="lead">Pásate por cualquiera de nuestros puntos.</p>
-      </header>
-      <div class="puntos" id="lista-puntos"></div>
-
-      <header class="cabeza reveal u-cabeza">
-        <h3 class="sub">También vendemos en estas universidades</h3>
-      </header>
-      <ul class="universidades reveal" id="lista-universidades"></ul>
-    </div>
-  </section>
-
-  <!-- SÉ PARTE DEL CÁRTEL -->
-  <section class="unete" id="unete">
-    <div class="wrap">
-      <div class="unete-caja reveal">
-        <img src="img/logo.png" alt="" width="335" height="332" loading="lazy">
-        <div>
-          <div class="eyebrow">Trabaja con nosotros</div>
-          <h2 id="unete-titulo"></h2>
-          <p id="unete-texto"></p>
-          <p class="nota-pendiente" id="unete-pendiente"></p>
-        </div>
-        <a class="btn grande wa" id="btn-unete" href="#" target="_blank" rel="noopener"><span class="ico-wa" aria-hidden="true"></span> Quiero unirme</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACTO -->
   <section class="info" id="contacto">
     <div class="wrap">
       <header class="cabeza reveal">
@@ -148,7 +63,7 @@
         </div>
         <div class="info-card reveal">
           <h3>Instagram</h3>
-          <p><a href="https://instagram.com/elcarteldelasdonas_" target="_blank" rel="noopener">@elcarteldelasdonas_</a></p>
+          <p><a id="link-ig" target="_blank" rel="noopener"></a></p>
           <p>Síguenos para ver lo que sale cada día.</p>
         </div>
         <div class="info-card reveal">
@@ -166,231 +81,36 @@
   </section>
 </main>
 
-<footer>
-  <div class="wrap">
-    <span>UNIDOS · El Cartel de las Donas</span>
-    <span>Hoy, cada dona cuenta.</span>
-  </div>
-</footer>
-
-<div class="pedido" role="region" aria-label="Tu pedido">
-  <div class="wrap">
-    <div class="resumen" aria-live="polite">
-      <strong id="total">$0</strong>
-      <span id="detalle">Aún no has escogido nada</span>
-    </div>
-    <button type="button" class="btn wa" id="enviar" disabled><span class="ico-wa" aria-hidden="true"></span> Pedir por WhatsApp</button>
-    <small class="aviso-mini" id="aviso-barra"></small>
-  </div>
-</div>
-
+<footer class="pie"></footer>
+<script src="datos.js"></script>
+<script src="sitio.js"></script>
 <script>
-  /* =====================================================================
-     TEXTOS Y DATOS EDITABLES
-     Todo lo que puede cambiar está aquí arriba. Lo que diga [PENDIENTE: ...]
-     se muestra tal cual en la página hasta que lo reemplaces.
-     ===================================================================== */
-
-  // WhatsApp de pedidos y donaciones (solo números, con 57 adelante).
-  const WHATSAPP_PEDIDOS = "573052227062";
-  const WHATSAPP_PEDIDOS_VISIBLE = "+57 305 222 7062";
-
-  // WhatsApp para "Sé parte del Cártel" (quienes quieren ayudar a vender).
-  const WHATSAPP_UNETE = "573148765567";
-
-  const PRECIO = 5000;
-
-  // Aviso de atención y entregas (se muestra en el catálogo y junto al botón de pedido).
-  const AVISO_ATENCION = "Atención 24/7";
-  const AVISO_ENTREGAS = "Las entregas se piden máximo un día antes, antes de las 2:00 p. m., para confirmar disponibilidad.";
-
-  // Medios de pago.
-  const PAGOS_TEXTO = "Nequi y efectivo.";
-  const PAGOS_PENDIENTE = "[PENDIENTE: confirmar medios de pago (Nequi y otros)]"; // deja "" cuando esté confirmado
-
-  // Puntos físicos.
-  const PUNTOS = [
-    { nombre: "Ingenio", horario: "9:30 a. m. a 1:30 a. m.", detalle: "[PENDIENTE: dirección o punto de referencia]" },
-    { nombre: "Estadio", horario: "9:30 a. m. a 1:30 a. m.", detalle: "[PENDIENTE: dirección o punto de referencia]" }
+  // Tarjetas de la portada: cada una lleva a su página.
+  const TARJETAS = [
+    { href: "cajas.html", titulo: "Catálogo y cajas", texto: "Donas por sabor, pasteles y cajas para compartir. Arma tu pedido.", img: "img/caja-x30.jpg", color: "rosa" },
+    { href: "puntos.html", titulo: "Puntos físicos", texto: "Ingenio y Estadio, de 9:30 a. m. a 1:30 a. m.", icono: "📍", color: "azul" },
+    { href: "universidades.html", titulo: "Universidades", texto: "Las universidades donde nos encuentras.", icono: "🎓", color: "amarillo" },
+    { href: "donaciones.html", titulo: "Nuestra labor", texto: "Compramos donas para donarlas. Mira algunos momentos.", icono: "💛", color: "rosa" },
+    { href: "unete.html", titulo: UNETE.titulo, texto: "¿Quieres ayudarnos a vender? Súmate.", icono: "🤝", color: "azul" }
   ];
-
-  // Universidades donde venden.
-  const UNIVERSIDADES = [
-    "Universidad Santiago de Cali", "Universidad del Valle", "IUPC", "Universidad Camacho",
-    "Bellas Artes", "ICESI", "Javeriana"
-  ];
-
-  // Sé parte del Cártel (nombre confirmado por Cristian).
-  const UNETE = {
-    titulo: "Sé parte del Cártel",
-    texto: "¿Quieres ayudarnos a vender? Escríbenos y te contamos cómo sumarte.",
-    mensaje: "Hola, me interesa unirme al Cártel de las Donas y ayudar a vender.",
-    pendiente: "" // si vuelve a haber algo por confirmar, escríbelo aquí como "[PENDIENTE: ...]"
-  };
-
-  // Donaciones.
-  const DONAR = {
-    titulo: "Dona una caja",
-    // Párrafos del texto. Sin cifras inventadas.
-    texto: [
-      "En El Cartel también compramos donas para donarlas. Creemos que compartir algo dulce es una forma sencilla de acompañar a otros.",
-      "Si quieres sumarte, puedes comprar una caja para donar. Escríbenos y la coordinamos contigo."
-    ],
-    dato: "[PENDIENTE: cifras reales]", // ej.: "Más de X donas donadas" cuando tengas el dato real
-    datoEtiqueta: "donas compartidas",
-    pendiente: "[PENDIENTE: a quién se dona y cómo se coordina]", // deja "" cuando esté confirmado
-    mensaje: "Hola, quiero donar una caja de donas. ¿Cómo lo coordinamos?"
-  };
-
-  // Fotos de donaciones: pon los archivos en img/ con estos nombres.
-  // IMPORTANTE: nunca fotos con rostros de niños ni de beneficiarios, ni fotos
-  // que muestren la situación de alguien de forma humillante. Mejor manos, cajas, donas.
-  // Mientras una foto no exista, se ve un recuadro con el aviso de pendiente.
-  const FOTOS_DONACIONES = [
-    { img: "img/donacion-1.jpg", pie: "Cajas listas para compartir" },
-    { img: "img/donacion-2.jpg", pie: "Hechas con el mismo cariño" },
-    { img: "img/donacion-3.jpg", pie: "Gracias a quienes se suman" }
-  ];
-
-  // Donas por sabor. Para poner la foto de un sabor, agrégala en FOTOS, por ejemplo: Arequipe: "img/arequipe.jpg".
-  const FOTOS = {};
-  const SABORES = ["Arequipe", "Chantilly", "Chocobruce", "Chocochantilly", "Chocolate", "ChocoManí", "Chocopepitas", "Fresa", "Maracuyá", "Mora"]
-    .map(s => ({ id: "sabor-" + s.toLowerCase().normalize("NFD").replace(/[^a-z]/g, ""), sabor: s, nombre: "Dona de " + s, img: FOTOS[s] }));
-  const PASTELES = [
-    { id: "pastel-pollo", nombre: "Pastel de pollo", desc: "Hojaldre dorado relleno de pollo.", img: "img/pasteles.jpg" },
-    { id: "pastel-jyq", nombre: "Pastel de jamón y queso", desc: "Hojaldre dorado relleno de jamón y queso.", img: "img/pasteles.jpg" }
-  ];
-
-  /* ===================================================================== */
-
-  const $ = id => document.getElementById(id);
-  const pesos = n => "$" + n.toLocaleString("es-CO");
-  const waLink = (numero, texto) => `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
-  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  const conPendientes = s => esc(s).replace(/\[PENDIENTE:[^\]]*\]/g, m => `<mark class="pendiente">${m}</mark>`);
-
-  // Avisos
-  const avisoHTML = `<span class="aviso-ico" aria-hidden="true">⏰</span><div><strong>${esc(AVISO_ATENCION)}.</strong> ${esc(AVISO_ENTREGAS)}</div>`;
-  $("aviso-catalogo").innerHTML = avisoHTML;
-  $("aviso-barra").textContent = `${AVISO_ATENCION} · ${AVISO_ENTREGAS}`;
-  $("info-entregas").textContent = AVISO_ENTREGAS;
+  $("tarjetas").innerHTML = TARJETAS.map((t, i) => `
+    <a class="tarjeta-portada t-${t.color}${t.img ? " con-foto" : ""} reveal" href="${t.href}" style="--d:${i * 70}ms">
+      ${t.img ? `<img src="${t.img}" alt="" loading="lazy">` : `<span class="t-icono" aria-hidden="true">${t.icono}</span>`}
+      <span class="t-cuerpo">
+        <strong>${esc(t.titulo)}</strong>
+        <span>${esc(t.texto)}</span>
+        <span class="t-ir" aria-hidden="true">Ver →</span>
+      </span>
+    </a>`).join("");
+  const sabores = SABORES.map(s => `<span>${esc(s)}</span>`).join("");
+  $("cinta").innerHTML = sabores + sabores;
   $("num-pedidos").textContent = WHATSAPP_PEDIDOS_VISIBLE;
+  $("link-ig").href = "https://instagram.com/" + INSTAGRAM;
+  $("link-ig").textContent = "@" + INSTAGRAM;
+  $("info-entregas").textContent = AVISO_ATENCION + ". " + AVISO_ENTREGAS;
   $("info-pagos").textContent = PAGOS_TEXTO;
   if (PAGOS_PENDIENTE) $("pagos-pendiente").textContent = PAGOS_PENDIENTE; else $("pagos-pendiente").remove();
-
-  // Puntos y universidades
-  $("lista-puntos").innerHTML = PUNTOS.map((p, i) => `
-    <article class="punto reveal" style="--d:${i * 80}ms">
-      <span class="pin" aria-hidden="true">📍</span>
-      <h3>${esc(p.nombre)}</h3>
-      <p class="horario"><span>Horario</span> ${esc(p.horario)}</p>
-      ${p.detalle ? `<p class="detalle">${conPendientes(p.detalle)}</p>` : ""}
-    </article>`).join("");
-  $("lista-universidades").innerHTML = UNIVERSIDADES.map(u => `<li>🎓 ${esc(u)}</li>`).join("");
-
-  // Únete
-  $("unete-titulo").textContent = UNETE.titulo;
-  $("unete-texto").textContent = UNETE.texto;
-  $("btn-unete").href = waLink(WHATSAPP_UNETE, UNETE.mensaje);
-  if (UNETE.pendiente) $("unete-pendiente").innerHTML = conPendientes(UNETE.pendiente); else $("unete-pendiente").remove();
-
-  // Donaciones
-  $("donar-titulo").textContent = DONAR.titulo;
-  $("donar-texto").innerHTML = DONAR.texto.map(t => `<p>${conPendientes(t)}</p>`).join("");
-  $("donar-dato").innerHTML = `<strong>${conPendientes(DONAR.dato)}</strong><span>${esc(DONAR.datoEtiqueta)}</span>`;
-  $("btn-donar").href = waLink(WHATSAPP_PEDIDOS, DONAR.mensaje);
-  if (DONAR.pendiente) $("donar-pendiente").innerHTML = conPendientes(DONAR.pendiente); else $("donar-pendiente").remove();
-  const fotoVacia = `<div class="foto-vacia"><mark class="pendiente">[PENDIENTE: fotos de donaciones]</mark></div>`;
-  $("galeria-donaciones").innerHTML = FOTOS_DONACIONES.map((f, i) => `
-    <figure class="reveal" style="--d:${i * 90}ms">
-      <img src="${esc(f.img)}" alt="${esc(f.pie)}" loading="lazy">
-      <figcaption>${esc(f.pie)}</figcaption>
-    </figure>`).join("");
-  $("galeria-donaciones").querySelectorAll("img").forEach(img => {
-    const vaciar = () => img.outerHTML = fotoVacia;
-    if (img.complete && img.naturalWidth === 0) vaciar(); else img.addEventListener("error", vaciar);
-  });
-
-  // Catálogo
-  const PRODUCTOS = [...SABORES, ...PASTELES];
-  const cant = Object.fromEntries(PRODUCTOS.map(p => [p.id, 0]));
-  const stepper = p => `
-          <div class="stepper">
-            <button type="button" data-id="${p.id}" data-d="-1" aria-label="Quitar una: ${p.nombre}">−</button>
-            <output id="q-${p.id}">0</output>
-            <button type="button" data-id="${p.id}" data-d="1" aria-label="Agregar una: ${p.nombre}">+</button>
-          </div>`;
-  const tarjeta = (p, i) => `
-    <article class="dona pastel reveal" id="card-${p.id}" style="--d:${i * 80}ms">
-      <div class="dona-foto"><img src="${p.img}" alt="${p.nombre}" loading="lazy"></div>
-      <div class="dona-body">
-        <h3>${p.nombre}</h3>
-        <p>${p.desc}</p>
-        <div class="fila">
-          <span class="precio">${pesos(PRECIO)}</span>${stepper(p)}
-        </div>
-      </div>
-    </article>`;
-  const tarjetaSabor = (p, i) => `
-    <article class="sabor-card reveal" id="card-${p.id}" style="--d:${(i % 5) * 60}ms">
-      ${p.img ? `<img src="${p.img}" alt="${p.nombre}" loading="lazy">` : `<div class="foto-sabor" aria-hidden="true"><span>Foto próximamente</span></div>`}
-      <h3>${p.sabor}</h3>
-      <div class="fila">
-        <span class="precio">${pesos(PRECIO)}</span>${stepper(p)}
-      </div>
-    </article>`;
-  $("lista-sabores").innerHTML = SABORES.map(tarjetaSabor).join("");
-  $("lista-pasteles").innerHTML = PASTELES.map(tarjeta).join("");
-
-  const reiniciar = (el, clase) => { el.classList.remove(clase); void el.offsetWidth; el.classList.add(clase); };
-
-  document.querySelector("main").addEventListener("click", e => {
-    const b = e.target.closest("button[data-id]");
-    if (!b) return;
-    const id = b.dataset.id;
-    cant[id] = Math.max(0, cant[id] + Number(b.dataset.d));
-    const out = $("q-" + id);
-    out.textContent = cant[id];
-    reiniciar(out, "salta");
-    $("card-" + id).classList.toggle("elegida", cant[id] > 0);
-    actualizar(true);
-  });
-
-  let mensajePedido = "";
-  function actualizar(animar) {
-    const items = PRODUCTOS.filter(p => cant[p.id] > 0);
-    const unidades = items.reduce((s, p) => s + cant[p.id], 0);
-    const total = unidades * PRECIO;
-    $("total").textContent = pesos(total);
-    if (animar) reiniciar($("total"), "salta");
-    $("detalle").textContent = unidades
-      ? `${unidades} producto${unidades > 1 ? "s" : ""}: ` + items.map(p => `${cant[p.id]} ${p.nombre}`).join(", ")
-      : "Aún no has escogido nada";
-    const lineas = items.map(p => `• ${cant[p.id]} x ${p.nombre} (${pesos(cant[p.id] * PRECIO)})`);
-    mensajePedido = `¡Hola, Cartel de las Donas! Quiero hacer este pedido:\n${lineas.join("\n")}\nTotal: ${pesos(total)}\n\nMi nombre: \nDirección o punto de entrega: \nFecha y hora de entrega: `;
-    // Con el carrito vacío el botón queda deshabilitado de verdad (no se puede pulsar ni enfocar).
-    $("enviar").disabled = unidades === 0;
-    document.body.classList.toggle("hay-pedido", unidades > 0);
-  }
-  $("enviar").addEventListener("click", () => {
-    if ($("enviar").disabled) return;
-    window.open(waLink(WHATSAPP_PEDIDOS, mensajePedido), "_blank", "noopener");
-  });
-  actualizar(false);
-
-  // Animación al aparecer en pantalla
-  const reveals = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window) {
-    const io = new IntersectionObserver(entradas => entradas.forEach(en => {
-      if (!en.isIntersecting) return;
-      const el = en.target;
-      el.classList.add("visible");
-      io.unobserve(el);
-      // Al terminar la entrada, la tarjeta vuelve a sus propias transiciones (hover rápido).
-      setTimeout(() => el.classList.remove("reveal", "visible"), 800 + (parseInt(el.style.getPropertyValue("--d")) || 0));
-    }), { rootMargin: "0px 0px -8% 0px" });
-    reveals.forEach(el => io.observe(el));
-  } else reveals.forEach(el => el.classList.add("visible"));
+  animarEntradas();
 </script>
 </body>
 </html>
