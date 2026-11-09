@@ -332,6 +332,7 @@ h2 { font-size: clamp(2.2rem, 5.5vw, 3.4rem); }
 .info-card p { margin: 0 0 6px; opacity: .9; }
 .info-card .num { font-family: var(--display); font-size: 1.5rem; letter-spacing: .02em; user-select: all; opacity: 1; }
 .info-card .pendiente { margin-top: 6px; }
+.info-card .domicilio { font-weight: 800; color: var(--amarillo); opacity: 1; }
 footer { background: var(--negro); color: rgba(255,255,255,.6); font-size: .85rem; border-top: 2px dashed rgba(255,255,255,.2); }
 footer a { color: var(--amarillo); }
 footer .wrap { padding-block: 22px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }

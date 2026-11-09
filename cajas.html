@@ -69,8 +69,8 @@
 <script src="datos.js"></script>
 <script src="sitio.js"></script>
 <script>
-  $("aviso-catalogo").innerHTML = `<span class="aviso-ico" aria-hidden="true">⏰</span><div><strong>${esc(AVISO_ATENCION)}.</strong> ${esc(AVISO_ENTREGAS)}</div>`;
-  $("aviso-barra").textContent = `${AVISO_ATENCION} · ${AVISO_ENTREGAS}`;
+  $("aviso-catalogo").innerHTML = `<span class="aviso-ico" aria-hidden="true">⏰</span><div><strong>${esc(AVISO_ATENCION)}.</strong> ${esc(AVISO_ENTREGAS)} <strong>${esc(DOMICILIO)}</strong></div>`;
+  $("aviso-barra").textContent = `${AVISO_ATENCION} · ${AVISO_ENTREGAS} ${DOMICILIO}`;
 
   const sabores = SABORES.map(s => ({ id: "sabor-" + s.toLowerCase().normalize("NFD").replace(/[^a-z]/g, ""), sabor: s, nombre: "Dona de " + s, img: FOTOS[s] }));
   const PRODUCTOS = [...sabores, ...PASTELES];
