@@ -3,67 +3,145 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Cajas · El Cartel de las Donas</title>
+<title>Catálogo · El Cartel de las Donas</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Cajas de El Cartel de las Donas: x6, x22, x30, pasteles y donas, y DONATÓN x 100. Pídelas por WhatsApp.">
+<meta name="description" content="Catálogo de El Cartel de las Donas: donas por sabor y pasteles a $5.000, y cajas para compartir. Pide por WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@500;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@500;700;800;900&display=swap">
 <link rel="stylesheet" href="estilos.css">
+<script>document.documentElement.classList.add("js");</script>
 </head>
-<body>
-<header class="top">
-  <div class="wrap">
-    <a href="index.html" style="text-decoration:none"><b>El Cartel <span>de las Donas</span></b></a>
-    <nav aria-label="Secciones">
-      <a href="index.html#catalogo">Catálogo</a>
-      <a href="cajas.html" aria-current="page">Cajas</a>
-      <a href="index.html#contacto">Contacto</a>
-    </nav>
-  </div>
-</header>
+<body class="con-pedido">
+<header class="top"></header>
 
-<main>
-  <section class="cajas-sec pagina-cajas" id="cajas">
+  <div class="pagina-cabeza ">
     <div class="wrap">
-      <div class="eyebrow">Para compartir</div>
-      <h1 style="font-size:clamp(2.4rem,6vw,3.6rem)">Cajas del cartel</h1>
-      <p class="lead">Cada caja se pide directo por WhatsApp; no va en el carrito de las donas. Te confirmamos sabores y entrega por chat.</p>
+      <div class="eyebrow">Catálogo</div>
+      <h1>Escoge tus donas</h1>
+      <p class="lead">Todas a $5.000. Suma las que quieras con los botones y abajo te armamos el mensaje para WhatsApp.</p>
+    </div>
+  </div>
+<main>
+  <section class="sin-arriba">
+    <div class="wrap">
+      <div class="aviso-entregas reveal" id="aviso-catalogo"></div>
+      <h2 class="sub reveal">Donas por sabor</h2>
+      <div class="sabores" id="lista-sabores"></div>
+    </div>
+  </section>
+
+  <section class="sin-arriba">
+    <div class="wrap">
+      <header class="cabeza reveal">
+        <div class="eyebrow">Pasteles</div>
+        <h2>También hay pasteles</h2>
+        <p class="lead">Hojaldre dorado, a $5.000 la unidad. Se suman al mismo pedido.</p>
+      </header>
+      <div class="catalogo dos" id="lista-pasteles"></div>
+    </div>
+  </section>
+
+  <section class="cajas-sec" id="cajas">
+    <div class="wrap">
+      <header class="cabeza reveal">
+        <div class="eyebrow">Para compartir</div>
+        <h2>Cajas del cartel</h2>
+        <p class="lead">Cada caja se pide directo por WhatsApp; no va en el carrito de las donas. Te confirmamos sabores y entrega por chat.</p>
+      </header>
       <div class="cajas" id="lista-cajas"></div>
-      <a class="btn volver" href="index.html">← Volver al inicio</a>
     </div>
   </section>
 </main>
 
-<footer>
+<div class="pedido" role="region" aria-label="Tu pedido">
   <div class="wrap">
-    <span>UNIDOS · El Cartel de las Donas</span>
-    <span>Hoy, cada dona cuenta.</span>
+    <div class="resumen" aria-live="polite">
+      <strong id="total">$0</strong>
+      <span id="detalle">Aún no has escogido nada</span>
+    </div>
+    <button type="button" class="btn wa" id="enviar" disabled><span class="ico-wa" aria-hidden="true"></span> Pedir por WhatsApp</button>
+    <small class="aviso-mini" id="aviso-barra"></small>
   </div>
-</footer>
+</div>
 
+<footer class="pie"></footer>
+<script src="datos.js"></script>
+<script src="sitio.js"></script>
 <script>
-  // Cajas editables: cambia nombres, precios, descripciones o fotos aquí.
-  const WHATSAPP = "573052227062";
-  const CAJAS = [
-    { nombre: "CAJA x 6", precio: 30000, desc: "6 donas para antojarse.", img: "img/caja-x6.jpg" },
-    { nombre: "CAJA x 22", precio: 100000, desc: "22 donas para la oficina o la familia.", img: "img/caja-x22.jpg" },
-    { nombre: "CAJA x 30", precio: 135000, desc: "30 donas para la fiesta.", img: "img/caja-x30.jpg" },
-    { nombre: "CAJA Pasteles y Donas", precio: 100000, desc: "Lo dulce y lo salado en una sola caja.", img: "img/caja-pasteles-donas.jpg" },
-    { nombre: "DONATÓN x 100", precio: 430000, desc: "50 donas y 50 pasteles para eventos grandes.", img: "img/donaton-x100.jpg", destacada: true }
-  ];
-  const pesos = n => "$" + n.toLocaleString("es-CO");
-  const wa = texto => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(texto)}`;
-  document.getElementById("lista-cajas").innerHTML = CAJAS.map(c => `
-    <article class="caja${c.destacada ? " destacada" : ""}">
+  $("aviso-catalogo").innerHTML = `<span class="aviso-ico" aria-hidden="true">⏰</span><div><strong>${esc(AVISO_ATENCION)}.</strong> ${esc(AVISO_ENTREGAS)} <strong>${esc(DOMICILIO)}</strong></div>`;
+  $("aviso-barra").textContent = `${AVISO_ATENCION} · ${AVISO_ENTREGAS} ${DOMICILIO}`;
+
+  const sabores = SABORES.map(s => ({ id: "sabor-" + s.toLowerCase().normalize("NFD").replace(/[^a-z]/g, ""), sabor: s, nombre: "Dona de " + s, img: FOTOS[s] }));
+  const PRODUCTOS = [...sabores, ...PASTELES];
+  const cant = Object.fromEntries(PRODUCTOS.map(p => [p.id, 0]));
+  const stepper = p => `
+          <div class="stepper">
+            <button type="button" data-id="${p.id}" data-d="-1" aria-label="Quitar una: ${p.nombre}">−</button>
+            <output id="q-${p.id}">0</output>
+            <button type="button" data-id="${p.id}" data-d="1" aria-label="Agregar una: ${p.nombre}">+</button>
+          </div>`;
+  $("lista-sabores").innerHTML = sabores.map((p, i) => `
+    <article class="sabor-card reveal" id="card-${p.id}" style="--d:${(i % 5) * 60}ms">
+      ${p.img ? `<img src="${p.img}" alt="${p.nombre}" loading="lazy">` : `<div class="foto-sabor" aria-hidden="true"><span>Foto próximamente</span></div>`}
+      <h3>${p.sabor}</h3>
+      <div class="fila"><span class="precio">${pesos(PRECIO)}</span>${stepper(p)}</div>
+    </article>`).join("");
+  $("lista-pasteles").innerHTML = PASTELES.map((p, i) => `
+    <article class="dona pastel reveal" id="card-${p.id}" style="--d:${i * 80}ms">
+      <div class="dona-foto"><img src="${p.img}" alt="${p.nombre}" loading="lazy"></div>
+      <div class="dona-body">
+        <h3>${p.nombre}</h3>
+        <p>${p.desc}</p>
+        <div class="fila"><span class="precio">${pesos(PRECIO)}</span>${stepper(p)}</div>
+      </div>
+    </article>`).join("");
+  $("lista-cajas").innerHTML = CAJAS.map((c, i) => `
+    <article class="caja${c.destacada ? " destacada" : ""} reveal" style="--d:${(i % 3) * 70}ms">
       <img src="${c.img}" alt="${c.nombre}" loading="lazy">
       <div class="caja-body">
         <h3>${c.nombre}</h3>
         <p>${c.desc}</p>
         <span class="precio">${pesos(c.precio)}</span>
-        <a class="btn wa" href="${wa("Quiero pedir " + c.nombre)}" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+        <a class="btn wa" href="${waLink(WHATSAPP_PEDIDOS, "Quiero pedir " + c.nombre)}" target="_blank" rel="noopener"><span class="ico-wa" aria-hidden="true"></span> Pedir por WhatsApp</a>
       </div>
     </article>`).join("");
+
+  const reiniciar = (el, clase) => { el.classList.remove(clase); void el.offsetWidth; el.classList.add(clase); };
+  document.querySelector("main").addEventListener("click", e => {
+    const b = e.target.closest("button[data-id]");
+    if (!b) return;
+    const id = b.dataset.id;
+    cant[id] = Math.max(0, cant[id] + Number(b.dataset.d));
+    const out = $("q-" + id);
+    out.textContent = cant[id];
+    reiniciar(out, "salta");
+    $("card-" + id).classList.toggle("elegida", cant[id] > 0);
+    actualizar(true);
+  });
+
+  let mensajePedido = "";
+  function actualizar(animar) {
+    const items = PRODUCTOS.filter(p => cant[p.id] > 0);
+    const unidades = items.reduce((s, p) => s + cant[p.id], 0);
+    const total = unidades * PRECIO;
+    $("total").textContent = pesos(total);
+    if (animar) reiniciar($("total"), "salta");
+    $("detalle").textContent = unidades
+      ? `${unidades} producto${unidades > 1 ? "s" : ""}: ` + items.map(p => `${cant[p.id]} ${p.nombre}`).join(", ")
+      : "Aún no has escogido nada";
+    const lineas = items.map(p => `• ${cant[p.id]} x ${p.nombre} (${pesos(cant[p.id] * PRECIO)})`);
+    mensajePedido = `¡Hola, Cartel de las Donas! Quiero hacer este pedido:\n${lineas.join("\n")}\nTotal: ${pesos(total)}\n\nMi nombre: \nDirección o punto de entrega: \nFecha y hora de entrega: `;
+    // Con el carrito vacío el botón queda deshabilitado de verdad (no se puede pulsar ni enfocar).
+    $("enviar").disabled = unidades === 0;
+    document.body.classList.toggle("hay-pedido", unidades > 0);
+  }
+  $("enviar").addEventListener("click", () => {
+    if ($("enviar").disabled) return;
+    window.open(waLink(WHATSAPP_PEDIDOS, mensajePedido), "_blank", "noopener");
+  });
+  actualizar(false);
+  animarEntradas();
 </script>
 </body>
 </html>

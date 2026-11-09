@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nuestra labor · El Cartel de las Donas</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="La labor social de El Cartel de las Donas: compramos donas para donarlas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@500;700;800;900&display=swap">
+<link rel="stylesheet" href="estilos.css">
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+<header class="top"></header>
+
+  <div class="pagina-cabeza labor">
+    <div class="wrap">
+      <div class="eyebrow">Labor social</div>
+      <h1 id="labor-titulo"></h1>
+      <div class="labor-texto" id="labor-texto"></div>
+    </div>
+  </div>
+<main>
+  <section>
+    <div class="wrap">
+      <div class="galeria-donaciones" id="galeria-labor"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="pie"></footer>
+<script src="datos.js"></script>
+<script src="sitio.js"></script>
+<script>
+  $("labor-titulo").textContent = LABOR.titulo;
+  $("labor-texto").innerHTML = LABOR.texto.map(t => `<p>${conPendientes(t)}</p>`).join("");
+  const fotoVacia = `<div class="foto-vacia"><mark class="pendiente">${esc(AVISO_FOTOS_LABOR)}</mark></div>`;
+  $("galeria-labor").innerHTML = FOTOS_LABOR.map((f, i) => `
+    <figure class="reveal" style="--d:${i * 90}ms">
+      <img src="${esc(f.img)}" alt="${esc(f.pie)}" loading="lazy">
+      <figcaption>${esc(f.pie)}</figcaption>
+    </figure>`).join("");
+  $("galeria-labor").querySelectorAll("img").forEach(img => {
+    const vaciar = () => img.outerHTML = fotoVacia;
+    if (img.complete && img.naturalWidth === 0) vaciar(); else img.addEventListener("error", vaciar);
+  });
+  animarEntradas();
+</script>
+</body>
+</html>

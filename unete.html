@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sé parte del Cártel · El Cartel de las Donas</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="¿Quieres ayudar a vender donas? Escríbenos por WhatsApp y sé parte del Cártel de las Donas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@500;700;800;900&display=swap">
+<link rel="stylesheet" href="estilos.css">
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+<header class="top"></header>
+
+<main>
+  <section class="unete">
+    <div class="wrap unete-grid">
+      <figure class="unete-foto reveal">
+        <img src="img/unete-duena.jpg" alt="La dueña del Cártel de las Donas, con la escarapela del Cártel, sonríe sosteniendo una caja de donas rellenas" width="900" height="1200">
+      </figure>
+      <div class="unete-caja reveal">
+        <img src="img/logo.png" alt="" width="335" height="332">
+        <div>
+          <div class="eyebrow">Trabaja con nosotros</div>
+          <h1 id="unete-titulo"></h1>
+          <p id="unete-texto"></p>
+          <p class="nota-pendiente" id="unete-pendiente"></p>
+        </div>
+        <a class="btn grande wa" id="btn-unete" href="#" target="_blank" rel="noopener"><span class="ico-wa" aria-hidden="true"></span> Quiero unirme</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="pie"></footer>
+<script src="datos.js"></script>
+<script src="sitio.js"></script>
+<script>
+  $("unete-titulo").textContent = UNETE.titulo;
+  $("unete-texto").textContent = UNETE.texto;
+  $("btn-unete").href = waLink(WHATSAPP_UNETE, UNETE.mensaje);
+  if (UNETE.pendiente) $("unete-pendiente").innerHTML = conPendientes(UNETE.pendiente); else $("unete-pendiente").remove();
+  animarEntradas();
+</script>
+</body>
+</html>

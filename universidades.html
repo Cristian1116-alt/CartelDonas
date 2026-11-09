@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Universidades · El Cartel de las Donas</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Universidades donde vende El Cartel de las Donas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@500;700;800;900&display=swap">
+<link rel="stylesheet" href="estilos.css">
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+<header class="top"></header>
+
+  <div class="pagina-cabeza amarillo">
+    <div class="wrap">
+      <div class="eyebrow">Dónde nos encuentras</div>
+      <h1>Universidades</h1>
+      <p class="lead">También vendemos en estas universidades.</p>
+    </div>
+  </div>
+<main>
+  <section>
+    <div class="wrap">
+      <ul class="universidades grande" id="lista-universidades"></ul>
+      <div class="cta-final reveal">
+        <p>¿Estudias en una de ellas y quieres ayudarnos a vender?</p>
+        <a class="btn grande" href="unete.html">Sé parte del Cártel</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="pie"></footer>
+<script src="datos.js"></script>
+<script src="sitio.js"></script>
+<script>
+  $("lista-universidades").innerHTML = UNIVERSIDADES.map((u, i) => `<li class="reveal" style="--d:${i * 50}ms"><span aria-hidden="true">🎓</span> ${esc(u)}</li>`).join("");
+  animarEntradas();
+</script>
+</body>
+</html>
