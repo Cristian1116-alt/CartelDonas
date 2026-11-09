@@ -77,8 +77,12 @@ const AVISO_FOTOS_LABOR = "[PENDIENTE: fotos de la labor]";
 // Donas por sabor. Para poner la foto de un sabor, agrégala en FOTOS, por ejemplo: Arequipe: "img/arequipe.jpg".
 const FOTOS = {
   Arequipe: "img/arequipe.jpg",
+  Chocochantilly: "img/chocochantilly.jpg",
   Chocolate: "img/chocolate.jpg",
-  Fresa: "img/fresa.jpg"
+  Chocopepitas: "img/chocopepitas.jpg",
+  Fresa: "img/fresa.jpg",
+  "Maracuyá": "img/maracuya.jpg",
+  Mora: "img/mora.jpg"
 };
 const SABORES = ["Arequipe", "Chantilly", "Chocobruce", "Chocochantilly", "Chocolate", "ChocoManí", "Chocopepitas", "Fresa", "Maracuyá", "Mora"];
 
