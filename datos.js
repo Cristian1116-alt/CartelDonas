@@ -22,8 +22,8 @@ const AVISO_ENTREGAS = "Pide tu domicilio el día anterior, antes de las 2:00 p.
 const DOMICILIO = "Domicilio: $3.000 en Cali, Palmira y Yumbo.";
 
 // Medios de pago.
-const PAGOS_TEXTO = "Nequi y efectivo.";
-const PAGOS_PENDIENTE = "[PENDIENTE: confirmar medios de pago (Nequi y otros)]"; // deja "" cuando esté confirmado
+const PAGOS_TEXTO = "Efectivo y Nequi.";
+const PAGOS_PENDIENTE = ""; // deja "" cuando esté confirmado
 
 // Menú (el mismo en todas las páginas).
 const MENU = [
