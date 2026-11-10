@@ -37,8 +37,8 @@ const MENU = [
 
 // Puntos físicos.
 const PUNTOS = [
-  { nombre: "Parque del Ingenio", horario: "9:30 a. m. a 1:30 a. m.", detalle: "" },
-  { nombre: "Estadio", horario: "9:30 a. m. a 1:30 a. m.", detalle: "[PENDIENTE: dirección o punto de referencia]" }
+  { nombre: "Parque del Ingenio", horario: "Sábados y domingos, 9:30 a. m. a 1:30 a. m.", detalle: "" },
+  { nombre: "Estadio", horario: "Sábados y domingos, 9:30 a. m. a 1:30 a. m.", detalle: "[PENDIENTE: dirección o punto de referencia]" }
 ];
 
 // Universidades donde venden.
