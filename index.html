@@ -55,27 +55,41 @@
         <div class="eyebrow">Contacto</div>
         <h2>Cómo pedir</h2>
       </header>
-      <div class="info-grid">
-        <div class="info-card reveal">
-          <h3>WhatsApp</h3>
-          <p class="num" id="num-pedidos"></p>
-          <p>Escríbenos o arma el pedido en el catálogo. Atención 24/7.</p>
+      <div class="pedir">
+        <div class="pedir-acciones">
+          <a class="pedir-wa reveal" id="pedir-wa" target="_blank" rel="noopener">
+            <span class="pedir-ico"><span class="ico-wa" aria-hidden="true"></span></span>
+            <span class="pedir-txt">
+              <small>Pide por WhatsApp</small>
+              <strong id="num-pedidos"></strong>
+              <em><i class="punto-vivo" aria-hidden="true"></i> <span id="pedir-atencion"></span></em>
+            </span>
+            <span class="pedir-flecha" aria-hidden="true">→</span>
+          </a>
+          <a class="pedir-ig reveal" id="link-ig" target="_blank" rel="noopener">
+            <span class="ico-ig" aria-hidden="true"></span>
+            <span>Síguenos en Instagram <b id="ig-usuario"></b></span>
+          </a>
+          <a class="pedir-catalogo reveal" href="cajas.html">o arma tu pedido en el catálogo →</a>
         </div>
-        <div class="info-card reveal">
-          <h3>Instagram</h3>
-          <p><a id="link-ig" target="_blank" rel="noopener"></a></p>
-          <p>Síguenos para ver lo que sale cada día.</p>
-        </div>
-        <div class="info-card reveal">
-          <h3>Entregas</h3>
-          <p id="info-entregas"></p>
-          <p class="domicilio" id="info-domicilio"></p>
-        </div>
-        <div class="info-card reveal">
-          <h3>Medios de pago</h3>
-          <p id="info-pagos"></p>
-          <span class="pendiente" id="pagos-pendiente"></span>
-        </div>
+        <ul class="pedir-datos reveal">
+          <li>
+            <span class="dato-ico" aria-hidden="true">🛵</span>
+            <div>
+              <h3>Entregas</h3>
+              <p id="info-entregas"></p>
+              <p class="chip-domicilio" id="info-domicilio"></p>
+            </div>
+          </li>
+          <li>
+            <span class="dato-ico" aria-hidden="true">💵</span>
+            <div>
+              <h3>Medios de pago</h3>
+              <p id="info-pagos"></p>
+              <span class="pendiente" id="pagos-pendiente"></span>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </section>
@@ -88,7 +102,7 @@
   // Tarjetas de la portada: cada una lleva a su página.
   const TARJETAS = [
     { href: "cajas.html", titulo: "Catálogo y cajas", texto: "Donas por sabor, pasteles y cajas para compartir. Arma tu pedido.", img: "img/caja-x30.jpg", color: "rosa" },
-    { href: "puntos.html", titulo: "Puntos físicos", texto: "Parque del Ingenio y Estadio, de 9:30 a. m. a 1:30 a. m.", icono: "📍", color: "azul" },
+    { href: "puntos.html", titulo: "Puntos físicos", texto: "Parque del Ingenio y Estadio Pascual Guerrero, de 9:30 a. m. a 1:30 a. m., sábados y domingos.", icono: "📍", color: "azul" },
     { href: "universidades.html", titulo: "Universidades", texto: "Las universidades donde nos encuentras.", icono: "🎓", color: "amarillo" },
     { href: "donaciones.html", titulo: "Nuestra labor", texto: "Compramos donas para donarlas. Mira algunos momentos.", icono: "💛", color: "rosa" },
     { href: "unete.html", titulo: UNETE.titulo, texto: "¿Quieres ayudarnos a vender? Súmate.", icono: "🤝", color: "azul" }
@@ -103,10 +117,12 @@
       </span>
     </a>`).join("");
   const sabores = SABORES.map(s => `<span>${esc(s)}</span>`).join("");
-  $("cinta").innerHTML = sabores + sabores;
+  $("cinta").innerHTML = `<div class="cinta-grupo">${sabores}</div><div class="cinta-grupo">${sabores}</div>`;
   $("num-pedidos").textContent = WHATSAPP_PEDIDOS_VISIBLE;
+  $("pedir-wa").href = waLink(WHATSAPP_PEDIDOS, "¡Hola! Quiero hacer un pedido 🍩");
+  $("pedir-atencion").textContent = AVISO_ATENCION;
   $("link-ig").href = "https://instagram.com/" + INSTAGRAM;
-  $("link-ig").textContent = "@" + INSTAGRAM;
+  $("ig-usuario").textContent = "@" + INSTAGRAM;
   $("info-entregas").textContent = AVISO_ENTREGAS;
   $("info-domicilio").textContent = DOMICILIO;
   $("info-pagos").textContent = PAGOS_TEXTO;

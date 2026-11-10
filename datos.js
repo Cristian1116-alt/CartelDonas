@@ -9,7 +9,7 @@
 const WHATSAPP_PEDIDOS = "573052227062";
 const WHATSAPP_PEDIDOS_VISIBLE = "+57 305 222 7062";
 
-// WhatsApp para "Sé parte del Cártel" (quienes quieren ayudar a vender).
+// WhatsApp para "Únete al Cartel" (quienes quieren ayudar a vender).
 const WHATSAPP_UNETE = "573148765567";
 
 const INSTAGRAM = "elcarteldelasdonas_";
@@ -32,13 +32,13 @@ const MENU = [
   { href: "puntos.html", texto: "Puntos físicos" },
   { href: "universidades.html", texto: "Universidades" },
   { href: "donaciones.html", texto: "Nuestra labor" },
-  { href: "unete.html", texto: "Sé parte" }
+  { href: "unete.html", texto: "Únete" }
 ];
 
 // Puntos físicos.
 const PUNTOS = [
-  { nombre: "Parque del Ingenio", horario: "9:30 a. m. a 1:30 a. m.", detalle: "" },
-  { nombre: "Estadio", horario: "9:30 a. m. a 1:30 a. m.", detalle: "[PENDIENTE: dirección o punto de referencia]" }
+  { nombre: "Parque del Ingenio", horario: "9:30 a. m. a 1:30 a. m., sábados y domingos", detalle: "" },
+  { nombre: "Estadio Pascual Guerrero", horario: "9:30 a. m. a 1:30 a. m., sábados y domingos", detalle: "" }
 ];
 
 // Universidades donde venden.
@@ -47,9 +47,9 @@ const UNIVERSIDADES = [
   "Bellas Artes", "ICESI", "Javeriana"
 ];
 
-// Sé parte del Cártel.
+// Únete al Cartel.
 const UNETE = {
-  titulo: "Sé parte del Cártel",
+  titulo: "Únete al Cartel",
   texto: "¿Quieres ayudarnos a vender? Escríbenos y te contamos cómo sumarte.",
   mensaje: "Hola, me interesa unirme al Cártel de las Donas y ayudar a vender.",
   pendiente: "" // si hay algo por confirmar, escríbelo aquí como "[PENDIENTE: ...]"
