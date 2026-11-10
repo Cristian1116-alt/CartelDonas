@@ -182,7 +182,9 @@ a { color: inherit; }
 
 /* Cinta de sabores */
 .cinta { background: var(--negro); color: var(--amarillo); overflow: hidden; border-block: 3px solid var(--negro); transform: rotate(-1.2deg); margin: -14px -10px 0; position: relative; z-index: 2; }
-.cinta-track { display: flex; width: max-content; animation: desfile 40s linear infinite; }
+.cinta-track { display: flex; width: max-content; }
+/* Cada grupo se anima por separado: en iPhone una sola franja muy ancha animada se queda en blanco */
+.cinta-grupo { display: flex; flex-shrink: 0; animation: desfile 40s linear infinite; will-change: transform; }
 .cinta span { font-family: var(--display); font-size: 1.25rem; padding: 10px 18px; white-space: nowrap; }
 .cinta span::after { content: "✦"; color: var(--rosa); margin-left: 36px; }
 
@@ -410,7 +412,7 @@ footer .wrap { padding-block: 22px; display: flex; flex-wrap: wrap; justify-cont
 
 @keyframes entrar { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
 @keyframes flotar { 0%, 100% { translate: 0 0; rotate: -3deg; } 50% { translate: 0 -10px; rotate: 3deg; } }
-@keyframes desfile { to { transform: translateX(-50%); } }
+@keyframes desfile { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-100%, 0, 0); } }
 @keyframes latido { 0% { box-shadow: 0 0 0 0 rgba(62,224,127,.7); } 70% { box-shadow: 0 0 0 10px rgba(62,224,127,0); } 100% { box-shadow: 0 0 0 0 rgba(62,224,127,0); } }
 @keyframes salta { 0% { transform: scale(1); } 40% { transform: scale(1.35); } 100% { transform: scale(1); } }
 @keyframes llamar { 0%, 100% { transform: none; } 10% { transform: rotate(-3deg) scale(1.04); } 20% { transform: rotate(3deg) scale(1.04); } 30% { transform: none; } }
@@ -479,7 +481,15 @@ footer .wrap { padding-block: 22px; display: flex; flex-wrap: wrap; justify-cont
   .ctas { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .ctas .btn { justify-content: center; text-align: center; padding: 13px 10px; }
   .precio-sello { margin-top: 22px; }
-  .collage { width: min(86%, 320px); }
+  /* Collage más limpio: dos videos lado a lado y el logo como sello */
+  .collage { width: 100%; max-width: 420px; aspect-ratio: 10 / 7; }
+  .collage .c2 { display: none; }
+  .collage img:not(.logo-flotante), .collage video { border-width: 3px; border-radius: 18px; box-shadow: 5px 5px 0 var(--negro); }
+  .collage .c1 { left: 0; top: 4%; width: 53%; transform: rotate(-4deg); }
+  .collage .c3 { right: 0; left: auto; top: 0; bottom: auto; width: 50%; transform: rotate(4deg); z-index: 1; }
+  .logo-flotante { width: 28%; left: 36%; bottom: 0; border-width: 3px; box-shadow: 3px 3px 0 var(--negro); }
+  .cinta span { font-size: 1.1rem; padding: 9px 14px; }
+  .cinta span::after { margin-left: 26px; }
 
   /* Tarjetas de la portada: la de foto grande, las demás en filas compactas */
   .tarjetas-portada { gap: 14px; }

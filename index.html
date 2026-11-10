@@ -117,7 +117,7 @@
       </span>
     </a>`).join("");
   const sabores = SABORES.map(s => `<span>${esc(s)}</span>`).join("");
-  $("cinta").innerHTML = sabores + sabores;
+  $("cinta").innerHTML = `<div class="cinta-grupo">${sabores}</div><div class="cinta-grupo">${sabores}</div>`;
   $("num-pedidos").textContent = WHATSAPP_PEDIDOS_VISIBLE;
   $("pedir-wa").href = waLink(WHATSAPP_PEDIDOS, "¡Hola! Quiero hacer un pedido 🍩");
   $("pedir-atencion").textContent = AVISO_ATENCION;
