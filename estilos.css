@@ -287,12 +287,14 @@ h2 { font-size: clamp(2.2rem, 5.5vw, 3.4rem); }
 .foto-vacia { aspect-ratio: 4 / 3; display: grid; place-items: center; padding: 12px; text-align: center; border-radius: 10px; border: 2px dashed var(--negro); background: repeating-linear-gradient(45deg, #fff 0 14px, var(--rosa-suave) 14px 28px); }
 
 /* Puntos físicos y universidades */
-.puntos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; max-width: 820px; }
+.puntos { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; max-width: 820px; }
+.puntos:has(> .punto:only-child) { max-width: 520px; }
 .punto {
   position: relative; background: #fff; border: 3px solid var(--negro); border-radius: 22px; padding: 22px 22px 20px;
   box-shadow: 6px 6px 0 var(--azul); transition: transform .25s var(--suave);
 }
 .punto:nth-child(2) { box-shadow: 6px 6px 0 var(--rosa); }
+.punto:nth-child(3) { box-shadow: 6px 6px 0 var(--amarillo); }
 .punto:hover { transform: translateY(-4px); }
 .pin { font-size: 1.8rem; display: block; margin-bottom: 6px; }
 .punto h2 { font-size: 2.2rem; }
@@ -556,6 +558,7 @@ footer .wrap { padding-block: 22px; display: flex; flex-wrap: wrap; justify-cont
   .puntos { gap: 16px; }
   .punto { padding: 18px; box-shadow: 4px 4px 0 var(--azul); }
   .punto:nth-child(2) { box-shadow: 4px 4px 0 var(--rosa); }
+  .punto:nth-child(3) { box-shadow: 4px 4px 0 var(--amarillo); }
   .punto h2 { font-size: 1.9rem; }
   .pin { font-size: 1.5rem; margin-bottom: 2px; }
   .cta-final { padding: 18px; box-shadow: 4px 4px 0 var(--amarillo); }

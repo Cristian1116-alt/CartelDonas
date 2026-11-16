@@ -38,8 +38,7 @@ const MENU = [
 // Puntos físicos.
 // direccion: la dirección exacta. Se muestra con un botón "Cómo llegar" que abre Google Maps.
 const PUNTOS = [
-  { nombre: "Parque del Ingenio", direccion: "[PENDIENTE: dirección exacta]", horario: "9:30 a. m. a 1:30 a. m., sábados y domingos", detalle: "" },
-  { nombre: "Estadio Pascual Guerrero", direccion: "[PENDIENTE: dirección exacta]", horario: "9:30 a. m. a 1:30 a. m., sábados y domingos", detalle: "" }
+  { nombre: "Nuestro punto", direccion: "Carrera 66a # 11-71", horario: "9:30 a. m. a 1:30 a. m., sábados y domingos", detalle: "" }
 ];
 
 // Universidades donde venden.
