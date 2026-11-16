@@ -36,9 +36,9 @@ const MENU = [
 ];
 
 // Puntos físicos.
+// direccion: la dirección exacta. Se muestra con un botón "Cómo llegar" que abre Google Maps.
 const PUNTOS = [
-  { nombre: "Parque del Ingenio", horario: "9:30 a. m. a 1:30 a. m., sábados y domingos", detalle: "" },
-  { nombre: "Estadio Pascual Guerrero", horario: "9:30 a. m. a 1:30 a. m., sábados y domingos", detalle: "" }
+  { nombre: "Nuestro punto", direccion: "Carrera 66a # 11-71", horario: "9:30 a. m. a 1:30 a. m., sábados y domingos", detalle: "" }
 ];
 
 // Universidades donde venden.
@@ -47,11 +47,34 @@ const UNIVERSIDADES = [
   "Bellas Artes", "ICESI", "Javeriana"
 ];
 
+// Los dos botones de la página de universidades.
+const UNIVERSIDADES_BOTONES = {
+  vender: {
+    titulo: "¿Y tú dónde quieres vender?",
+    texto: "Sé parte del Cartel de las Donas.",
+    boton: "Quiero vender"
+  },
+  domi: {
+    titulo: "Domi en la U",
+    texto: "Escríbenos y te decimos qué día vendemos en tu universidad.",
+    boton: "Escríbenos",
+    mensaje: "Hola, ¿qué día venden en mi universidad? Estudio en: "
+  }
+};
+
 // Únete al Cartel.
 const UNETE = {
   titulo: "Únete al Cartel",
-  texto: "¿Quieres ayudarnos a vender? Escríbenos y te contamos cómo sumarte.",
-  mensaje: "Hola, me interesa unirme al Cártel de las Donas y ayudar a vender.",
+  texto: "¿Quieres emprender y no sabes cómo empezar? Sé parte del Cartel de las Donas. ¡Escríbenos!",
+  // Viñetas (tomadas del volante "¿Quieres generar ingresos?").
+  puntos: [
+    "Emprende mientras estudias",
+    "Donas frescas e irresistibles",
+    "No necesitas experiencia: te enseñamos cómo vender",
+    "Tú eliges tu horario",
+    "Fácil, rápido y rentable"
+  ],
+  mensaje: "Hola, quiero emprender y ser parte del Cartel de las Donas.",
   pendiente: "" // si hay algo por confirmar, escríbelo aquí como "[PENDIENTE: ...]"
 };
 

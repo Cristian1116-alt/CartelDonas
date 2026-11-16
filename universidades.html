@@ -26,9 +26,18 @@
   <section>
     <div class="wrap">
       <ul class="universidades grande" id="lista-universidades"></ul>
-      <div class="cta-final reveal">
-        <p>¿Estudias en una de ellas y quieres ayudarnos a vender?</p>
-        <a class="btn grande" href="unete.html">Únete al Cartel</a>
+      <div class="u-botones">
+        <div class="u-boton reveal">
+          <h2 id="u-vender-titulo"></h2>
+          <p id="u-vender-texto"></p>
+          <a class="btn grande amarillo" id="u-vender-btn" href="unete.html"></a>
+        </div>
+        <div class="u-boton domi reveal" style="--d:80ms">
+          <span class="u-icono" aria-hidden="true">🛵</span>
+          <h2 id="u-domi-titulo"></h2>
+          <p id="u-domi-texto"></p>
+          <a class="btn grande wa" id="u-domi-btn" href="#" target="_blank" rel="noopener"><span class="ico-wa" aria-hidden="true"></span> <span id="u-domi-btn-txt"></span></a>
+        </div>
       </div>
     </div>
   </section>
@@ -39,6 +48,14 @@
 <script src="sitio.js"></script>
 <script>
   $("lista-universidades").innerHTML = UNIVERSIDADES.map((u, i) => `<li class="reveal" style="--d:${i * 50}ms"><span aria-hidden="true">🎓</span> ${esc(u)}</li>`).join("");
+  const ub = UNIVERSIDADES_BOTONES;
+  $("u-vender-titulo").textContent = ub.vender.titulo;
+  $("u-vender-texto").textContent = ub.vender.texto;
+  $("u-vender-btn").textContent = ub.vender.boton;
+  $("u-domi-titulo").textContent = ub.domi.titulo;
+  $("u-domi-texto").textContent = ub.domi.texto;
+  $("u-domi-btn-txt").textContent = ub.domi.boton;
+  $("u-domi-btn").href = waLink(WHATSAPP_PEDIDOS, ub.domi.mensaje);
   animarEntradas();
 </script>
 </body>
