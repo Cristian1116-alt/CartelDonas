@@ -42,8 +42,10 @@
     <article class="punto reveal" style="--d:${i * 80}ms">
       <span class="pin" aria-hidden="true">📍</span>
       <h2>${esc(p.nombre)}</h2>
+      ${p.direccion ? `<p class="direccion"><span>Dirección</span> ${conPendientes(p.direccion)}</p>` : ""}
       <p class="horario"><span>Horario</span> ${esc(p.horario)}</p>
       ${p.detalle ? `<p class="detalle">${conPendientes(p.detalle)}</p>` : ""}
+      ${p.direccion && !p.direccion.includes("[PENDIENTE") ? `<a class="btn como-llegar" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.direccion + ", Cali, Colombia")}" target="_blank" rel="noopener">📍 Cómo llegar</a>` : ""}
     </article>`).join("");
   $("aviso-puntos").textContent = AVISO_ENTREGAS + " " + DOMICILIO;
   animarEntradas();

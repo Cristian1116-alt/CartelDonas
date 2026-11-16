@@ -299,6 +299,20 @@ h2 { font-size: clamp(2.2rem, 5.5vw, 3.4rem); }
 .horario { margin: 10px 0 0; font-weight: 800; font-size: 1.1rem; }
 .horario span { display: block; font-size: .72rem; text-transform: uppercase; letter-spacing: .12em; color: var(--gris); }
 .detalle { margin: 12px 0 0; }
+.direccion { margin: 10px 0 0; font-weight: 800; font-size: 1.1rem; }
+.direccion span { display: block; font-size: .72rem; text-transform: uppercase; letter-spacing: .12em; color: var(--gris); }
+.como-llegar { margin-top: 16px; }
+.u-botones { margin-top: 48px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.u-boton {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 8px;
+  background: var(--rosa); color: #fff; border: 3px solid var(--negro); border-radius: 22px;
+  padding: 24px; box-shadow: 6px 6px 0 var(--negro);
+}
+.u-boton h2 { font-size: clamp(1.7rem, 4vw, 2.2rem); text-shadow: 3px 3px 0 var(--negro); }
+.u-boton p { margin: 0 0 8px; font-weight: 700; font-size: 1.05rem; }
+.u-boton .btn { margin-top: auto; }
+.u-boton.domi { background: var(--azul); }
+.u-icono { font-size: 2.2rem; line-height: 1; }
 .u-cabeza { margin-top: 56px; margin-bottom: 18px; }
 .universidades { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 10px; }
 .universidades.grande { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
@@ -337,6 +351,12 @@ h2 { font-size: clamp(2.2rem, 5.5vw, 3.4rem); }
 
 .unete-caja h2 { font-size: clamp(1.9rem, 4.5vw, 2.8rem); text-shadow: 3px 3px 0 var(--negro); }
 .unete-caja p { margin: 10px 0 0; font-weight: 700; font-size: 1.05rem; }
+.unete-lista { list-style: none; padding: 0; margin: 14px 0 0; display: grid; gap: 8px; font-weight: 700; }
+.unete-lista li { position: relative; padding-left: 30px; }
+.unete-lista li::before {
+  content: "✓"; position: absolute; left: 0; top: .05em; width: 22px; height: 22px; display: grid; place-items: center;
+  background: var(--amarillo); color: var(--negro); border: 2px solid var(--negro); border-radius: 50%; font-size: .8rem; font-weight: 900;
+}
 
 /* Contacto */
 .info { background: var(--negro); color: #fff; }
@@ -454,6 +474,9 @@ footer .wrap { padding-block: 22px; display: flex; flex-wrap: wrap; justify-cont
   .stepper button { width: 32px; height: 32px; }
   .galeria-donaciones { grid-template-columns: 1fr; gap: 18px; max-width: 420px; }
   .puntos { grid-template-columns: 1fr; }
+  .u-botones { grid-template-columns: 1fr; gap: 16px; }
+  .u-boton { padding: 20px; box-shadow: 4px 4px 0 var(--negro); }
+  .u-boton .btn { width: 100%; }
   .unete-caja { grid-template-columns: 1fr; padding: 24px 20px; text-align: left; }
   .unete-caja img { width: 84px; }
   .unete-caja .btn { width: 100%; }
